@@ -42,7 +42,7 @@ const NavBar = () => {
             <div className="navbar-end">
                 {
                     user ? <img className="w-16 h-14 rounded" src="https://i.ibb.co/z80XXXV/MSB02948.jpg" alt="User Proile Picture" />
-                    : <a className="btn">Login</a>
+                    : <Link className="btn text-white" to="/login">Login</Link>
                 }
             </div>
         </div>
