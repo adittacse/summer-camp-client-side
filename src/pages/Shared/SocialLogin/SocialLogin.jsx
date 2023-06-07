@@ -55,9 +55,10 @@ const SocialLogin = () => {
         githubSignIn()
             .then(result => {
                 const loggedUser = result.user;
+                const email = loggedUser.reloadUserInfo.providerUserInfo[0].screenName;
                 const saveUser = {
                     name: loggedUser.displayName,
-                    email: loggedUser.email,
+                    email: email,
                     role: "student"
                 };
                 fetch("http://localhost:3000/users", {

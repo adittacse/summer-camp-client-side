@@ -1,20 +1,25 @@
 import React from 'react';
 import logo from "../../../assets/TranquilZen.png";
 import {Link} from "react-router-dom";
+import useAuth from "../../../hooks/useAuth.jsx";
 
 const NavBar = () => {
-    const user = false;
+    const {user, logOut} = useAuth();
+    
+    const handleLogout = () => {
+        logOut()
+            .then(() => {})
+            .catch(error => {})
+    }
     
     const navMenuItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/">Instructor</Link></li>
         <li><Link to="/">Classes</Link></li>
         {
-            user ? <>
+            user && <>
                     <li><Link to="/">Dashboard</Link></li>
-                    <li><Link to="/">Logout</Link></li>
-                </> : <>
-                    <li><Link to="/signup">Signup</Link></li>
+                    <li><Link onClick={handleLogout} to="/">Logout</Link></li>
                 </>
         }
     </>
@@ -41,8 +46,11 @@ const NavBar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user ? <img className="w-16 h-14 rounded" src="https://i.ibb.co/z80XXXV/MSB02948.jpg" alt="User Proile Picture" />
-                    : <Link className="btn text-white" to="/login">Login</Link>
+                    user ? <img className="w-16 h-14 rounded" src={user?.photoURL} alt="User Proile Picture" />
+                    : <>
+                            <Link className="btn text-white mr-2" to="/login">Login</Link>
+                            <Link className="btn text-white" to="/signup">Signup</Link>
+                        </>
                 }
             </div>
         </div>
