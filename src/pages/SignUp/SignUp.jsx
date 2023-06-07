@@ -1,10 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {Helmet} from "react-helmet-async";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth.jsx";
-// import SocialLogin from "../Shared/SocialLogin/SocialLogin.jsx";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin.jsx";
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -123,7 +123,7 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p className="text-center">Already registered? <Link to="/login">Go to log in</Link></p>
-                        {/*<SocialLogin></SocialLogin>*/}
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
