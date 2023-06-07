@@ -3,14 +3,14 @@ import logo from "../../../assets/TranquilZen.png";
 import {Link} from "react-router-dom";
 
 const NavBar = () => {
-    const user = true;
+    const user = false;
     
     const navMenuItems = <>
         <li><Link to="/">Home</Link></li>
+        <li><Link to="/">Instructor</Link></li>
+        <li><Link to="/">Classes</Link></li>
         {
             user ? <>
-                    <li><Link to="/">Instructor</Link></li>
-                    <li><Link to="/">Classes</Link></li>
                     <li><Link to="/">Dashboard</Link></li>
                     <li><Link to="/">Logout</Link></li>
                 </> : <>
