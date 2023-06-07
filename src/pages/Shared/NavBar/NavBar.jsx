@@ -2,9 +2,11 @@ import React from 'react';
 import logo from "../../../assets/TranquilZen.png";
 import {Link} from "react-router-dom";
 import useAuth from "../../../hooks/useAuth.jsx";
+import useAdmin from "../../../hooks/useAdmin.jsx";
 
 const NavBar = () => {
     const {user, logOut} = useAuth();
+    const [isAdmin] = useAdmin();
     
     const handleLogout = () => {
         logOut()
@@ -17,8 +19,8 @@ const NavBar = () => {
         <li><Link to="/">Instructor</Link></li>
         <li><Link to="/">Classes</Link></li>
         {
-            user && <>
-                    <li><Link to="/">Dashboard</Link></li>
+            user && isAdmin && <>
+                    <li><Link to="/dashboard/manage-users">Dashboard</Link></li>
                     <li><Link onClick={handleLogout} to="/">Logout</Link></li>
                 </>
         }

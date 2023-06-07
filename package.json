@@ -11,6 +11,7 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.54.0",
+    "@tanstack/react-query": "^4.29.12",
     "axios": "^1.4.0",
     "firebase": "^9.22.1",
     "localforage": "^1.10.0",
@@ -21,6 +22,7 @@
     "react-helmet-async": "^1.3.0",
     "react-hook-form": "^7.44.3",
     "react-icons": "^4.9.0",
+    "react-query": "^3.39.3",
     "react-router-dom": "^6.12.0",
     "react-simple-captcha": "^9.0.2",
     "sort-by": "^0.0.2",
