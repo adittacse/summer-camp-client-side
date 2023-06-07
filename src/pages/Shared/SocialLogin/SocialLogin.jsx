@@ -95,13 +95,10 @@ const SocialLogin = () => {
         <div>
             <div className="divider mt-6 mb-6">Or sign in with</div>
             <div className="flex justify-center mb-6">
-                <button className="btn btn-circle mr-4">
-                    <FaFacebookF></FaFacebookF>
-                </button>
-                <button onClick={handleGoogleSignIn} className="btn btn-circle mr-4">
+                <button onClick={handleGoogleSignIn} className="btn btn-circle hover:bg-red-600 text-white mr-4">
                     <FaGoogle></FaGoogle>
                 </button>
-                <button onClick={handleGithubSignIn} className="btn btn-circle mr-4">
+                <button onClick={handleGithubSignIn} className="btn btn-circle hover:bg-red-600 text-white">
                     <FaGithub></FaGithub>
                 </button>
             </div>
