@@ -20,7 +20,7 @@ const SignUp = () => {
                         const saveUser = {
                             name: data.name,
                             email: data.email,
-                            role: "student"
+                            role: "Student"
                         };
                         fetch("http://localhost:3000/users", {
                             method: "POST",

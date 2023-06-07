@@ -2,10 +2,11 @@ import React from 'react';
 import SectionTitle from "../../../components/SectionTitle/SectionTitle.jsx";
 import {Helmet} from "react-helmet-async";
 import useAxiosSecure from "../../../hooks/useAxiosSecure.jsx";
-import {useQuery} from "@tanstack/react-query";
+import {useQuery, useMutation} from "@tanstack/react-query";
 import {RiDeleteBin5Line} from "react-icons/ri";
 import {MdAdminPanelSettings} from "react-icons/md";
 import {FaUserTie} from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -15,8 +16,54 @@ const ManageUsers = () => {
         return res.data;
     });
     
+    const deleteUserMutation = useMutation((userId) => {
+        return axiosSecure.delete(`/users/${userId}`);
+    });
+    
     const handleUserDelete = (user) => {
-        //
+        Swal.fire({
+            title: `Are you want to delete ${user.name}?`,
+            text: "You won't be able to restore this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteUserMutation.mutate(user._id);
+                
+                if (deleteUserMutation.isSuccess) {
+                    refetch();
+                    Swal.fire(
+                        'Deleted!',
+                        'User has been deleted.',
+                        'success'
+                    );
+                } else if (deleteUserMutation.isError) {
+                    Swal.fire(
+                        'Error!',
+                        'An error occurred while deleting the user.',
+                        'error'
+                    );
+                }
+                
+                // fetch(`http://localhost:3000/users/${user._id}`, {
+                //     method: "DELETE"
+                // })
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         if (data.deletedCount > 0) {
+                //             refetch();
+                //             Swal.fire(
+                //                 'Deleted!',
+                //                 'User been deleted.',
+                //                 'success'
+                //             )
+                //         }
+                //     })
+            }
+        })
     }
     
     return (
