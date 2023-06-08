@@ -43,6 +43,36 @@ const ManageClasses = () => {
         });
     };
     
+    const handleDenyClass = (item) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `Deny ${item.className} class?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Deny Class!'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    await axiosSecure.patch(`/class/deny/${item._id}`);
+                    refetch();
+                    await Swal.fire(
+                        'Congratulations!',
+                        `${item.className} is Denied`,
+                        'success');
+                } catch (error) {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `${error.message}`,
+                        footer: 'Something went wrong!',
+                    })
+                }
+            }
+        });
+    };
+    
     return (
         <div className="w-[95%] mx-auto">
             <Helmet>
@@ -91,7 +121,7 @@ const ManageClasses = () => {
                             <td>{item.status}</td>
                             <th className="text-center hover:text-white">
                                 <button onClick={() => handleApproveClass(item)} className="btn btn-ghost btn-xs hover:bg-green-700">Approve</button>
-                                <button className="btn btn-ghost btn-xs hover:bg-red-700">Deny</button>
+                                <button onClick={() => handleDenyClass(item)} className="btn btn-ghost btn-xs hover:bg-red-700">Deny</button>
                                 <button className="btn btn-ghost btn-xs hover:bg-secondary">Feedback</button>
                             </th>
                         </tr>
