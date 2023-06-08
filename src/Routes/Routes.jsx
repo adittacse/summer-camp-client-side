@@ -50,10 +50,9 @@ export const router = createBrowserRouter([
                 path: "add-class",
                 element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
             },
-            // student routes
             {
                 path: "my-classes",
-                element: <StudentRoute><MyClasses></MyClasses></StudentRoute>
+                element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
             }
         ]
     }
