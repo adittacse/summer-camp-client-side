@@ -3,6 +3,7 @@ import {Helmet} from "react-helmet-async";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle.jsx";
 import useAxiosSecure from "../../../hooks/useAxiosSecure.jsx";
 import {useQuery} from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 const ManageClasses = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -11,6 +12,36 @@ const ManageClasses = () => {
         const res = await axiosSecure.get("/class");
         return res.data;
     });
+    
+    const handleApproveClass = (item) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `Approve ${item.className} class?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Approve Class!'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    await axiosSecure.patch(`/class/approve/${item._id}`);
+                    refetch();
+                    await Swal.fire(
+                        'Congratulations!',
+                        `${item.className} is Approved`,
+                        'success');
+                } catch (error) {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `${error.message}`,
+                        footer: 'Something went wrong!',
+                    })
+                }
+            }
+        });
+    };
     
     return (
         <div className="w-[95%] mx-auto">
@@ -59,7 +90,7 @@ const ManageClasses = () => {
                             </td>
                             <td>{item.status}</td>
                             <th className="text-center hover:text-white">
-                                <button className="btn btn-ghost btn-xs hover:bg-green-700">Approve</button>
+                                <button onClick={() => handleApproveClass(item)} className="btn btn-ghost btn-xs hover:bg-green-700">Approve</button>
                                 <button className="btn btn-ghost btn-xs hover:bg-red-700">Deny</button>
                                 <button className="btn btn-ghost btn-xs hover:bg-secondary">Feedback</button>
                             </th>
