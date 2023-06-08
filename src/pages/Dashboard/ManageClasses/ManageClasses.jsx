@@ -162,9 +162,14 @@ const ManageClasses = () => {
                             </td>
                             <td>{item.status}</td>
                             <th className="text-center hover:text-white">
-                                <button onClick={() => handleApproveClass(item)} className="btn btn-ghost btn-xs hover:bg-green-700">Approve</button>
-                                <button onClick={() => handleDenyClass(item)} className="btn btn-ghost btn-xs hover:bg-red-700">Deny</button>
-                                <button onClick={() => handleModal(item)} className="btn btn-ghost btn-xs hover:bg-secondary">Feedback</button>
+                                <button onClick={() => handleApproveClass(item)}
+                                        className={`btn btn-ghost btn-xs hover:bg-green-700 ${item.status === 'Approved' ? 'disabled' : ''}`}
+                                        disabled={item.status === 'Approved'}>Approve</button>
+                                <button onClick={() => handleDenyClass(item)}
+                                        className={`btn btn-ghost btn-xs hover:bg-red-700 ${item.status === 'Denied' ? 'disabled' : ''}`}
+                                        disabled={item.status === 'Denied'}>Deny</button>
+                                <button onClick={() => handleModal(item)}
+                                        className="btn btn-ghost btn-xs hover:bg-secondary">Feedback</button>
                                 
                                 <dialog ref={ref => modalRefs.current[item._id] = ref} className="modal modal-bottom sm:modal-middle">
                                     <form method="dialog" className="modal-box">
