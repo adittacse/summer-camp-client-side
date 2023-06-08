@@ -2,11 +2,11 @@ import React from 'react';
 import logo from "../../../assets/TranquilZen.png";
 import {Link} from "react-router-dom";
 import useAuth from "../../../hooks/useAuth.jsx";
-import useAdmin from "../../../hooks/useAdmin.jsx";
+import useRole from "../../../hooks/useRole.jsx";
 
 const NavBar = () => {
     const {user, logOut} = useAuth();
-    const [isAdmin] = useAdmin();
+    const [role] = useRole();
     
     const handleLogout = () => {
         logOut()
@@ -19,10 +19,17 @@ const NavBar = () => {
         <li><Link to="/">Instructor</Link></li>
         <li><Link to="/">Classes</Link></li>
         {
-            user && isAdmin && <>
-                    <li><Link to="/dashboard/manage-users">Dashboard</Link></li>
-                    <li><Link onClick={handleLogout} to="/">Logout</Link></li>
+            role === "Admin" && <>
+                <li><Link to="/dashboard/manage-users">Dashboard</Link></li>
+            </>
+        }
+        {
+            role === "Student" && <>
+                    <li><Link to="/dashboard/my-classes">Dashboard</Link></li>
                 </>
+        }
+        {
+            user && <li><Link onClick={handleLogout} to="/">Logout</Link></li>
         }
     </>
     

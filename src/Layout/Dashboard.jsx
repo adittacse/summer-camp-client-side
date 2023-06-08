@@ -1,11 +1,17 @@
-import React from 'react';
-import {NavLink, Outlet} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {Link, NavLink, Outlet} from "react-router-dom";
 import useAuth from "../hooks/useAuth.jsx";
-import useAdmin from "../hooks/useAdmin.jsx";
+import useRole from "../hooks/useRole.jsx";
 
 const Dashboard = () => {
-    const {user} = useAuth();
-    const [isAdmin] = useAdmin();
+    const {user, logOut} = useAuth();
+    const [role] = useRole();
+    
+    const handleLogout = () => {
+        logOut()
+            .then(() => {})
+            .catch(error => {})
+    }
     
     return (
         <div className="drawer lg:drawer-open">
@@ -20,11 +26,19 @@ const Dashboard = () => {
                 <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                     {/* Sidebar content here */}
                     {
-                        isAdmin && <>
+                        role === "Admin" && <>
                             <li><NavLink to="/dashboard/manage-users">Manage Users</NavLink></li>
                         </>
                     }
+                    {
+                        role === "Student" && <>
+                            <li><NavLink to="/dashboard/my-classes">My Classes</NavLink></li>
+                        </>
+                    }
                     <li><NavLink to="/">Home</NavLink></li>
+                    {
+                        user && <li><Link onClick={handleLogout} to="/">Logout</Link></li>
+                    }
                 </ul>
             </div>
         </div>
