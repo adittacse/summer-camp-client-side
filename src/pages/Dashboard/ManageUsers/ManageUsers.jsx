@@ -5,6 +5,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure.jsx";
 import {useQuery} from "@tanstack/react-query";
 import {MdAdminPanelSettings} from "react-icons/md";
 import {FaUserTie} from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -13,6 +14,64 @@ const ManageUsers = () => {
         const res = await axiosSecure.get("/users");
         return res.data;
     });
+    
+    const handleMakeAdmin = (user) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `Make ${user.name} as Admin?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Make Admin!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:3000/users/user-to-admin/${user._id}`, {
+                    method: "PATCH"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.modifiedCount) {
+                            refetch();
+                            Swal.fire(
+                                'Congratulations!',
+                                `${user.name} is an Admin now`,
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+    }
+    
+    const handleMakeInstructor = (user) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `Make ${user.name} Subscriber?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Make Subscriber!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:3000/users/admin-to-instructor/${user._id}`, {
+                    method: "PATCH"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.modifiedCount) {
+                            refetch();
+                            Swal.fire(
+                                'Congratulations!',
+                                `${user.name} is Subscriber now`,
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+    }
     
     return (
         <div className="w-[95%] mx-auto">
@@ -45,6 +104,7 @@ const ManageUsers = () => {
                                     title="Make Admin"
                                     className={`btn bg-emerald-800 text-white mr-4 ${user.role === 'Admin' ? 'disabled' : ''}`}
                                     disabled={user.role === 'Admin'}
+                                    onClick={() => handleMakeAdmin(user)}
                                 >
                                     <MdAdminPanelSettings></MdAdminPanelSettings> Make Admin
                                 </button>
@@ -53,6 +113,7 @@ const ManageUsers = () => {
                                     title="Make Instructor"
                                     className={`btn bg-emerald-800 text-white mr-4 ${user.role === 'Instructor' ? 'disabled' : ''}`}
                                     disabled={user.role === 'Instructor'}
+                                    onClick={() => handleMakeInstructor(user)}
                                 >
                                     <FaUserTie></FaUserTie> Make Instructor
                                 </button>
