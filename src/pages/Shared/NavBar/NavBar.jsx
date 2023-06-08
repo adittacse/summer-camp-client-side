@@ -24,6 +24,11 @@ const NavBar = () => {
             </>
         }
         {
+            role === "Instructor" && <>
+                <li><Link to="/dashboard/add-class">Dashboard</Link></li>
+            </>
+        }
+        {
             role === "Student" && <>
                     <li><Link to="/dashboard/my-classes">Dashboard</Link></li>
                 </>
