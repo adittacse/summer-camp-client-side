@@ -4,6 +4,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle.jsx";
 import useAxiosSecure from "../../../hooks/useAxiosSecure.jsx";
 import useAuth from "../../../hooks/useAuth.jsx";
 import {useQuery} from "@tanstack/react-query";
+import {Link} from "react-router-dom";
 
 const MyClasses = () => {
     const {user} = useAuth();
@@ -59,7 +60,9 @@ const MyClasses = () => {
                             <td>{item.status}</td>
                             <td>{item.feedback}</td>
                             <th>
-                                <button className="btn btn-ghost btn-xs hover:bg-green-700 hover:text-white">Update Class</button>
+                                <Link to={`/dashboard/update-class/${item._id}`}>
+                                    <button className="btn btn-ghost btn-xs hover:bg-green-700 hover:text-white">Update Class</button>
+                                </Link>
                             </th>
                         </tr>
                         )

@@ -12,6 +12,7 @@ import MyClasses from "../pages/Dashboard/MyClasses/MyClasses.jsx";
 import InstructorRoute from "./InstructorRoute.jsx";
 import AddClass from "../pages/Dashboard/AddClass/AddClass.jsx";
 import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses.jsx";
+import UpdateClass from "../pages/Dashboard/UpdateClass/UpdateClass.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -53,6 +54,11 @@ export const router = createBrowserRouter([
             {
                 path: "my-classes",
                 element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
+            },
+            {
+                path: "update-class/:id",
+                element: <InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>,
+                loader: ({params}) => fetch(`http://localhost:3000/class/${params.id}`)
             }
         ]
     }
