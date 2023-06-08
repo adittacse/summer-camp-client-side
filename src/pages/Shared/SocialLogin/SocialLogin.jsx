@@ -51,56 +51,12 @@ const SocialLogin = () => {
             })
     }
     
-    const handleGithubSignIn = () => {
-        githubSignIn()
-            .then(result => {
-                const loggedUser = result.user;
-                const email = loggedUser.reloadUserInfo.providerUserInfo[0].screenName;
-                const saveUser = {
-                    name: loggedUser.displayName,
-                    email: email,
-                    role: "Student"
-                };
-                fetch("http://localhost:3000/users", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(saveUser)
-                })
-                    .then(res => res.json())
-                    .then( () => {
-                        Swal.fire({
-                            title: 'Login Successful!',
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            }
-                        });
-                        navigate(from, { replace: true });
-                    })
-                    .catch(error => {
-                        // Swal.fire({
-                        //     icon: 'error',
-                        //     title: 'Oops...',
-                        //     text: error.message,
-                        //     footer: 'Something went wrong!'
-                        // })
-                    })
-            })
-    }
-    
     return (
         <div>
             <div className="divider mt-6 mb-6">Or sign in with</div>
             <div className="flex justify-center mb-6">
                 <button onClick={handleGoogleSignIn} className="btn btn-circle hover:bg-red-600 text-white mr-4">
                     <FaGoogle></FaGoogle>
-                </button>
-                <button onClick={handleGithubSignIn} className="btn btn-circle hover:bg-red-600 text-white">
-                    <FaGithub></FaGithub>
                 </button>
             </div>
         </div>
