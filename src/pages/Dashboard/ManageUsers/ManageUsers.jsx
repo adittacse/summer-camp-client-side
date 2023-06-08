@@ -2,12 +2,9 @@ import React from 'react';
 import SectionTitle from "../../../components/SectionTitle/SectionTitle.jsx";
 import {Helmet} from "react-helmet-async";
 import useAxiosSecure from "../../../hooks/useAxiosSecure.jsx";
-import {useQuery, useMutation} from "@tanstack/react-query";
-import {RiDeleteBin5Line} from "react-icons/ri";
+import {useQuery} from "@tanstack/react-query";
 import {MdAdminPanelSettings} from "react-icons/md";
 import {FaUserTie} from "react-icons/fa";
-import Swal from "sweetalert2";
-import useAuth from "../../../hooks/useAuth.jsx";
 
 const ManageUsers = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -44,14 +41,20 @@ const ManageUsers = () => {
                             <td>{user.email}</td>
                             <td>{user.role}</td>
                             <td>
-                                <button title="Make Admin"
-                                        className="btn text-lg bg-emerald-800 text-white mr-4">
-                                    <MdAdminPanelSettings></MdAdminPanelSettings>
+                                <button
+                                    title="Make Admin"
+                                    className={`btn bg-emerald-800 text-white mr-4 ${user.role === 'Admin' ? 'disabled' : ''}`}
+                                    disabled={user.role === 'Admin'}
+                                >
+                                    <MdAdminPanelSettings></MdAdminPanelSettings> Make Admin
                                 </button>
                                 
-                                <button title="Make Instructor"
-                                        className="btn text-lg bg-emerald-800 text-white mr-4">
-                                    <FaUserTie></FaUserTie>
+                                <button
+                                    title="Make Instructor"
+                                    className={`btn bg-emerald-800 text-white mr-4 ${user.role === 'Instructor' ? 'disabled' : ''}`}
+                                    disabled={user.role === 'Instructor'}
+                                >
+                                    <FaUserTie></FaUserTie> Make Instructor
                                 </button>
                             </td>
                         </tr>
