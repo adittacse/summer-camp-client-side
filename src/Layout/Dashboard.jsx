@@ -35,6 +35,9 @@ const Dashboard = () => {
                             <li><NavLink to="/dashboard/my-classes">My Classes</NavLink></li>
                         </>
                     }
+                    
+                    <div className="border mt-4 mb-4"></div>
+                    
                     <li><NavLink to="/">Home</NavLink></li>
                     {
                         user && <li><Link onClick={handleLogout} to="/">Logout</Link></li>

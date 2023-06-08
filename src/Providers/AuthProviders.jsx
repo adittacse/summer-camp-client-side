@@ -6,9 +6,8 @@ import {
     signInWithEmailAndPassword,
     GoogleAuthProvider,
     signInWithPopup,
-    GithubAuthProvider,
     signOut,
-    updateProfile
+    updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.config.js";
 import axios from "axios";
@@ -20,7 +19,6 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
-    const githubProvider = new GithubAuthProvider();
     
     const createUser = (email, password) => {
         setLoading(true);
@@ -41,11 +39,6 @@ const AuthProvider = ({ children }) => {
     const googleSignIn = () => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider);
-    }
-    
-    const githubSignIn = () => {
-        setLoading(true);
-        return signInWithPopup(auth, githubProvider);
     }
     
     const logOut = () => {
@@ -82,7 +75,6 @@ const AuthProvider = ({ children }) => {
         updateUserProfile,
         signIn,
         googleSignIn,
-        githubSignIn,
         logOut,
     }
     
