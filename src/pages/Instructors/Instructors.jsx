@@ -30,7 +30,7 @@ const Instructors = () => {
             </Helmet>
             <SectionTitle heading="Meet Our Instructors"></SectionTitle>
             
-            <div className="grid md:grid-cols-2 gap-10 mt-16 mb-16">
+            <div className="grid md:grid-cols-2 gap-10 mt-8 mb-16">
                 {
                     instructors.map(instructor => <InstructorCard
                         key={instructor._id}

@@ -30,7 +30,7 @@ const Classes = () => {
             </Helmet>
             <SectionTitle heading="Our Classes"></SectionTitle>
             
-            <div className="grid grid-cols-3 justify-items-center">
+            <div className="grid grid-cols-3 justify-items-center mt-16 mb-16">
                 {
                     approvedClasses.map(approvedClass => <ClassCard key={approvedClass._id} approvedClass={approvedClass}></ClassCard>)
                 }
