@@ -17,7 +17,7 @@ const NavBar = () => {
     const navMenuItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
-        <li><Link to="/">Classes</Link></li>
+        <li><Link to="/classes">Classes</Link></li>
         {
             role === "Admin" && <>
                 <li><Link to="/dashboard/manage-classes">Dashboard</Link></li>

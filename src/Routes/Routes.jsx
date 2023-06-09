@@ -15,6 +15,7 @@ import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses.jsx";
 import UpdateClass from "../pages/Dashboard/UpdateClass/UpdateClass.jsx";
 import SelectedClass from "../pages/Dashboard/SelectedClass/SelectedClass.jsx";
 import Instructors from "../pages/Instructors/Instructors.jsx";
+import Classes from "../pages/Classes/Classes.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
             {
                 path: "instructors",
                 element: <Instructors></Instructors>
+            },
+            {
+                path: "classes",
+                element: <Classes></Classes>
             }
         ]
     },
