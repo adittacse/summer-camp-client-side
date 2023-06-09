@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Helmet} from "react-helmet-async";
 import SectionTitle from "../../components/SectionTitle/SectionTitle.jsx";
 import useAxiosSecure from "../../hooks/useAxiosSecure.jsx";
+import InstructorCard from "./InstructorCard.jsx";
 
 const Instructors = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -11,8 +12,7 @@ const Instructors = () => {
     useEffect( () => {
         const fetchDeniedClasses = async () => {
             try {
-                // const response = await axiosSecure.get("/users/role/Instructor");
-                const response = await axiosSecure.get("/users");
+                const response = await axiosSecure.get("/users/role/Instructor");
                 setInstructors(response.data);
             } catch (error) {
                 console.error('Error fetching denied classes:', error);
@@ -31,21 +31,11 @@ const Instructors = () => {
             </Helmet>
             <SectionTitle heading="Meet Our Instructors"></SectionTitle>
             
-            <div className="grid md:grid-cols-3 gap-10 mt-16 mb-16">
+            <div className="grid md:grid-cols-2 gap-10 mt-16 mb-16">
                 {
-                    instructors.map(instructor => <div key={instructor._id}>
-                            <div className="card w-96 bg-base-100 shadow-xl">
-                                <figure><img className="w-80 h-72" src={instructor.image} alt="Shoes" /></figure>
-                                <div className="card-body">
-                                    <h2 className="card-title">{instructor.name}</h2>
-                                    <p>{instructor.email}</p>
-                                    <div className="card-actions justify-end">
-                                        <button className="btn btn-primary">See Classes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )
+                    instructors.map(instructor => <InstructorCard
+                        key={instructor._id}
+                        instructor={instructor}></InstructorCard>)
                 }
             </div>
         </div>
