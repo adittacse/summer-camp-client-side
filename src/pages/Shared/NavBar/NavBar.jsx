@@ -16,7 +16,7 @@ const NavBar = () => {
     
     const navMenuItems = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/">Instructor</Link></li>
+        <li><Link to="/instructors">Instructors</Link></li>
         <li><Link to="/">Classes</Link></li>
         {
             role === "Admin" && <>
@@ -30,7 +30,7 @@ const NavBar = () => {
         }
         {
             role === "Student" && <>
-                    <li><Link to="/dashboard/my-classes">Dashboard</Link></li>
+                    <li><Link to="/dashboard/selected-class">Dashboard</Link></li>
                 </>
         }
         {

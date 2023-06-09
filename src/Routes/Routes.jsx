@@ -13,6 +13,8 @@ import InstructorRoute from "./InstructorRoute.jsx";
 import AddClass from "../pages/Dashboard/AddClass/AddClass.jsx";
 import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses.jsx";
 import UpdateClass from "../pages/Dashboard/UpdateClass/UpdateClass.jsx";
+import SelectedClass from "../pages/Dashboard/SelectedClass/SelectedClass.jsx";
+import Instructors from "../pages/Instructors/Instructors.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +32,10 @@ export const router = createBrowserRouter([
             {
                 path: "login",
                 element: <Login></Login>
+            },
+            {
+                path: "instructors",
+                element: <Instructors></Instructors>
             }
         ]
     },
@@ -59,6 +65,11 @@ export const router = createBrowserRouter([
                 path: "update-class/:id",
                 element: <InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>,
                 loader: ({params}) => fetch(`http://localhost:3000/class/${params.id}`)
+            },
+            // student routes
+            {
+                path: "selected-class",
+                element: <StudentRoute><SelectedClass></SelectedClass></StudentRoute>
             }
         ]
     }

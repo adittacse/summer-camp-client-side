@@ -39,7 +39,7 @@ const Dashboard = () => {
                     }
                     {
                         role === "Student" && <>
-                            <li><NavLink to="/dashboard/my-classes">My Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/selected-class">My Selected Class</NavLink></li>
                         </>
                     }
                     
