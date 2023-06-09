@@ -1,19 +1,29 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Helmet} from "react-helmet-async";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle.jsx";
 import useAxiosSecure from "../../../hooks/useAxiosSecure.jsx";
 import useAuth from "../../../hooks/useAuth.jsx";
-import {useQuery} from "@tanstack/react-query";
 import {Link} from "react-router-dom";
 
 const MyClasses = () => {
     const {user} = useAuth();
     const [axiosSecure] = useAxiosSecure();
+    const [classes, setClasses] = useState([]);
     
-    const { data: classes = [], refetch } = useQuery(["class"], async () => {
-        const res = await axiosSecure.get(`/class?instructorEmail=${user.email}`);
-        return res.data;
-    });
+    useEffect( () => {
+        const fetchDeniedClasses = async () => {
+            try {
+                const response = await axiosSecure.get(`/class?instructorEmail=${user.email}`);
+                setClasses(response.data);
+            } catch (error) {
+                console.error('Error fetching denied classes:', error);
+            }
+        }
+        
+        fetchDeniedClasses()
+            .then(res => {})
+            .catch(error => {});
+    }, []);
     
     return (
         <div className="w-[95%] mx-auto">
