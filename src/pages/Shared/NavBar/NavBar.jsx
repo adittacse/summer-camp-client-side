@@ -62,8 +62,8 @@ const NavBar = () => {
                 {
                     user ? <img className="w-16 h-14 rounded" src={user?.photoURL} alt="User Proile Picture" />
                     : <>
-                            <Link className="btn text-white mr-2" to="/login">Login</Link>
-                            <Link className="btn text-white" to="/signup">Signup</Link>
+                            <Link className="btn mr-2" to="/login">Login</Link>
+                            <Link className="btn" to="/signup">Signup</Link>
                         </>
                 }
             </div>
