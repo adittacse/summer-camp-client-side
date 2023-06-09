@@ -89,7 +89,7 @@ const ManageUsers = () => {
                         <th>Name</th>
                         <th>Email / GitHub Name</th>
                         <th>Current Role</th>
-                        <th>Actions</th>
+                        <th className="text-center">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -99,7 +99,7 @@ const ManageUsers = () => {
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>{user.role}</td>
-                            <td>
+                            <td className="text-center">
                                 <button
                                     title="Make Admin"
                                     className={`btn bg-emerald-800 text-white mr-4 ${user.role === 'Admin' ? 'disabled' : ''}`}
