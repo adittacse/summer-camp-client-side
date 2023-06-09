@@ -16,6 +16,7 @@ import UpdateClass from "../pages/Dashboard/UpdateClass/UpdateClass.jsx";
 import SelectedClass from "../pages/Dashboard/SelectedClass/SelectedClass.jsx";
 import Instructors from "../pages/Instructors/Instructors.jsx";
 import Classes from "../pages/Classes/Classes.jsx";
+import EnrolledClasses from "../pages/Dashboard/EnrolledClasses/EnrolledClasses.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -75,6 +76,10 @@ export const router = createBrowserRouter([
             {
                 path: "selected-class",
                 element: <StudentRoute><SelectedClass></SelectedClass></StudentRoute>
+            },
+            {
+                path: "enrolled-class",
+                element: <StudentRoute><EnrolledClasses></EnrolledClasses></StudentRoute>
             }
         ]
     }

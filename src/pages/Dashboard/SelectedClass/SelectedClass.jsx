@@ -56,8 +56,8 @@ const SelectedClass = () => {
             <SectionTitle heading="My Selected Classes"></SectionTitle>
             
             <div className="flex justify-evenly items-center w-[95%] mx-auto font-semibold mt-10">
-                <h3 className="text-2xl uppercase">Total Orders: {cart.length}</h3>
-                <h3 className="text-2xl uppercase">Total Price: ${totalPrice.toFixed(2)}</h3>
+                <h3 className="text-xl uppercase">Total Orders: {cart.length}</h3>
+                <h3 className="text-xl uppercase">Total Price: ${totalPrice.toFixed(2)}</h3>
                 <Link to="/dashboard/payment">
                     <button className="btn btn-warning">Pay</button>
                 </Link>
