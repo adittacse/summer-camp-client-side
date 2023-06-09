@@ -14,7 +14,7 @@ const Instructors = () => {
                 const response = await axiosSecure.get("/users/role/Instructor");
                 setInstructors(response.data);
             } catch (error) {
-                console.error('Error fetching denied classes:', error);
+                console.error('Error fetching instructors:', error);
             }
         }
         
