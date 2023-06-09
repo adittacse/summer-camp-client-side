@@ -1,35 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Helmet} from "react-helmet-async";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle.jsx";
-import useAuth from "../../../hooks/useAuth.jsx";
 import useAxiosSecure from "../../../hooks/useAxiosSecure.jsx";
 import Swal from "sweetalert2";
 import {RiDeleteBin5Line} from "react-icons/ri";
+import useCart from "../../../hooks/useCart.jsx";
+import {Link} from "react-router-dom";
 
 const SelectedClass = () => {
-    const {user} = useAuth();
     const [axiosSecure] = useAxiosSecure();
-    const [selectedClasses, setSelectedClasses] = useState([]);
+    const [cart, refetch] = useCart();
     
-    useEffect( () => {
-        const fetchSelectedClasses = async () => {
-            try {
-                const response = await axiosSecure.get(`/carts?email=${user.email}`);
-                setSelectedClasses(response.data);
-            } catch (error) {
-                await Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: `${error.message}`,
-                    footer: 'Something went wrong!'
-                })
-            }
-        }
-        
-        fetchSelectedClasses()
-            .then(res => {})
-            .catch(error => {});
-    }, []);
+    const totalPrice = cart.reduce((sum, item) => item.price + sum, 0);
     
     const handleDelete = (item) => {
         Swal.fire({
@@ -46,7 +28,7 @@ const SelectedClass = () => {
                     .then(response => {
                         const data = response.data;
                         if (data.deletedCount > 0) {
-                            // refetch();
+                            refetch();
                             Swal.fire(
                                 'Deleted!',
                                 'Class has been deleted.',
@@ -73,7 +55,15 @@ const SelectedClass = () => {
             </Helmet>
             <SectionTitle heading="My Selected Classes"></SectionTitle>
             
-            <div className="overflow-x-auto">
+            <div className="flex justify-evenly items-center w-[95%] mx-auto font-semibold mt-10">
+                <h3 className="text-2xl uppercase">Total Orders: {cart.length}</h3>
+                <h3 className="text-2xl uppercase">Total Price: ${totalPrice.toFixed(2)}</h3>
+                <Link to="/dashboard/payment">
+                    <button className="btn btn-warning">Pay</button>
+                </Link>
+            </div>
+            
+            <div className="overflow-x-auto w-[95%] mx-auto mt-10">
                 <table className="table">
                     {/* head */}
                     <thead>
@@ -87,7 +77,7 @@ const SelectedClass = () => {
                     </thead>
                     <tbody>
                     {
-                        selectedClasses.map((selectedClass, index) => <tr key={selectedClass._id}>
+                        cart.map((selectedClass, index) => <tr key={selectedClass._id}>
                             <th>{index + 1}</th>
                             <td>
                                 <div className="flex items-center space-x-3">
