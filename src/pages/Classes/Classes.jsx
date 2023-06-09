@@ -6,6 +6,7 @@ import ClassCard from "./ClassCard.jsx";
 import {useLocation, useNavigate} from "react-router-dom";
 import useAuth from "../../hooks/useAuth.jsx";
 import Swal from "sweetalert2";
+import useCart from "../../hooks/useCart.jsx";
 
 const Classes = () => {
     const {user} = useAuth();
@@ -13,6 +14,7 @@ const Classes = () => {
     const [approvedClasses, setApprovedClasses] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
+    const [, refetch] = useCart();
     
     useEffect( () => {
         const fetchInstructors = async () => {
@@ -38,6 +40,7 @@ const Classes = () => {
                 .then(response => {
                     const data = response.data;
                     if (data.insertedId) {
+                        refetch();
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',

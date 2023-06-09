@@ -3,10 +3,13 @@ import logo from "../../../assets/TranquilZen.png";
 import {Link} from "react-router-dom";
 import useAuth from "../../../hooks/useAuth.jsx";
 import useRole from "../../../hooks/useRole.jsx";
+import {FaShoppingCart} from "react-icons/fa";
+import useCart from "../../../hooks/useCart.jsx";
 
 const NavBar = () => {
     const {user, logOut} = useAuth();
     const [role] = useRole();
+    const [cart] = useCart();
     
     const handleLogout = () => {
         logOut()
@@ -34,6 +37,16 @@ const NavBar = () => {
                 </>
         }
         {
+            role === "Student" && <li>
+                <Link to="/dashboard/selected-class">
+                    <button className="btn gap-2 text-[16px]">
+                        <FaShoppingCart></FaShoppingCart>
+                        <div className="badge badge-secondary text-[16px]">+{cart?.length || 0}</div>
+                    </button>
+                </Link>
+            </li>
+        }
+        {
             user && <li><Link onClick={handleLogout} to="/">Logout</Link></li>
         }
     </>
@@ -54,7 +67,7 @@ const NavBar = () => {
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 items-center">
                     {navMenuItems}
                 </ul>
             </div>
