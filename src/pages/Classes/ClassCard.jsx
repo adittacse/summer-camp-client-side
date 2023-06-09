@@ -5,8 +5,11 @@ const ClassCard = ({ approvedClass }) => {
     const [role] = useRole();
     const {image, className, instructorName, seats, price} = approvedClass;
     
+    // Add a CSS class based on the condition
+    const cardClass = seats == 0 ? "card w-96 bg-base-100 shadow-xl mt-8 mb-16 border-4 border-red-500" : "card w-96 bg-base-100 shadow-xl mt-8 mb-16";
+    
     return (
-        <div className="card w-96 bg-base-100 shadow-xl mt-8 mb-16">
+        <div className={cardClass}>
             <figure><img src={image} alt="Class image" /></figure>
             <div className="card-body">
                 <h2 className="card-title">
