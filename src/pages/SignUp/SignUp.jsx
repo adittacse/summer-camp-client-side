@@ -19,6 +19,7 @@ const SignUp = () => {
                     .then( () => {
                         const saveUser = {
                             name: data.name,
+                            image: data.photoUrl,
                             email: data.email,
                             role: "Student"
                         };
