@@ -1,7 +1,7 @@
 import React from 'react';
 import useRole from "../../hooks/useRole.jsx";
 
-const ClassCard = ({ approvedClass }) => {
+const ClassCard = ({ approvedClass, handleAddToCart }) => {
     const [role] = useRole();
     const {image, className, instructorName, seats, price} = approvedClass;
     
@@ -21,7 +21,7 @@ const ClassCard = ({ approvedClass }) => {
                     <div className="badge badge-outline text-[16px] p-4">{
                         seats < 2 ? `${seats} Seat Available` : `${seats} Seats Available`
                     }</div>
-                    <button disabled={seats == 0 || role === "Admin" || role === "Instructor"} className="btn btn-primary btn-sm">Select</button>
+                    <button onClick={() => handleAddToCart(approvedClass)} disabled={seats == 0 || role === "Admin" || role === "Instructor"} className="btn btn-primary btn-sm">Select</button>
                 </div>
             </div>
         </div>

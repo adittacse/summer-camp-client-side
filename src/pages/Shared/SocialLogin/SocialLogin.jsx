@@ -39,8 +39,8 @@ const SocialLogin = () => {
                                 popup: 'animate__animated animate__fadeOutUp'
                             }
                         });
-                        navigate(from, { replace: true });
                     })
+                    navigate(from, { replace: true });
             })
             .catch(error => {
                 // Swal.fire({
