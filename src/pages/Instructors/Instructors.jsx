@@ -6,11 +6,10 @@ import InstructorCard from "./InstructorCard.jsx";
 
 const Instructors = () => {
     const [axiosSecure] = useAxiosSecure();
-    
     const [instructors, setInstructors] = useState([]);
     
     useEffect( () => {
-        const fetchDeniedClasses = async () => {
+        const fetchInstructors = async () => {
             try {
                 const response = await axiosSecure.get("/users/role/Instructor");
                 setInstructors(response.data);
@@ -19,7 +18,7 @@ const Instructors = () => {
             }
         }
         
-        fetchDeniedClasses()
+        fetchInstructors()
             .then(res => {})
             .catch(error => {});
     }, []);
