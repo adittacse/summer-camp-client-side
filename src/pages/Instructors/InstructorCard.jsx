@@ -8,7 +8,12 @@ const InstructorCard = ({ instructor }) => {
             <div className="flex">
                 <figure><img className="rounded-xl w-72 h-72" src={image} alt="Shoes" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title">{name} <div className="badge badge-secondary">{totalClasses} Classes</div></h2>
+                    <h2 className="card-title">
+                        {name}
+                        <div className="badge badge-secondary">
+                            {totalClasses >= 2 ? `${totalClasses} Classes` : `${totalClasses} Class`}
+                        </div>
+                    </h2>
                     <p className="text-[16px] font-semibold mb-4">Email: {email}</p>
                     <ul>
                         <p className="text-base font-bold">Class Names:</p>
