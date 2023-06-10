@@ -40,7 +40,7 @@ const PaymentHistory = () => {
                                 <th>#{payments.length - index}</th>
                                 <ul>
                                     {
-                                        payment.itemName.map((className, index) => (
+                                        payment.classesName.map((className, index) => (
                                                 <li className="text-[16px]" key={index}>{`${index + 1}. ${className}`}</li>
                                             )
                                         )
