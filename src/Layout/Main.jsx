@@ -4,14 +4,12 @@ import NavBar from "../pages/Shared/NavBar/NavBar.jsx";
 import Footer from "../pages/Shared/Footer/Footer.jsx";
 
 const Main = () => {
-    const location = useLocation();
-    const noHeaderFooter = location.pathname.includes("error");
     
     return (
         <div>
-            { noHeaderFooter || <NavBar></NavBar> }
+            <NavBar></NavBar>
             <Outlet></Outlet>
-            { noHeaderFooter || <Footer></Footer> }
+            <Footer></Footer>
         </div>
     );
 };

@@ -6,7 +6,7 @@ const InstructorCard = ({ instructor }) => {
     return (
         <div className="card card-compact bg-base-100 shadow-xl">
             <div className="flex">
-                <figure><img className="rounded-xl w-72 h-72" src={image} alt="Instructor image" /></figure>
+                <figure><img className="rounded-xl w-60 h-72" src={image} alt="Instructor image" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
                         {name}

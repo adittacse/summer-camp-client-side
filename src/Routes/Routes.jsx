@@ -19,6 +19,7 @@ import Classes from "../pages/Classes/Classes.jsx";
 import EnrolledClasses from "../pages/Dashboard/EnrolledClasses/EnrolledClasses.jsx";
 import Payment from "../pages/Dashboard/Payment/Payment.jsx";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory.jsx";
+import ErrorPage from "../pages/ErrorPage/ErrorPage.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -92,5 +93,9 @@ export const router = createBrowserRouter([
                 element: <StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
             }
         ]
+    },
+    {
+        path: "*",
+        element: <ErrorPage></ErrorPage>
     }
 ]);
