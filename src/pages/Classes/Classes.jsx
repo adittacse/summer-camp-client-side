@@ -14,7 +14,7 @@ const Classes = () => {
     const [approvedClasses, setApprovedClasses] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
-    const [, refetch] = useCart();
+    const [cart, refetch] = useCart();
     
     useEffect( () => {
         const fetchInstructors = async () => {
@@ -35,6 +35,19 @@ const Classes = () => {
         if (user && user.email) {
             const {_id, image, className, instructorName, price} = approvedClass;
             const mySelectedClass = {classId: _id, image, className, instructorName, price, email: user.email};
+            
+            // Check if the selected class already exists in the cart
+            const existsInCart = cart.some(item => item.classId === mySelectedClass.classId);
+            if (existsInCart) {
+                // Handle the case when the class already exists in the cart
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Class already in the cart',
+                    text: `${className} is already in your cart.`,
+                    footer: 'Please remove the existing item from the cart if you want to add it again.'
+                });
+                return;
+            }
             
             axiosSecure.post('/carts', mySelectedClass)
                 .then(response => {
