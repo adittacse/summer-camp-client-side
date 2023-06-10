@@ -1,9 +1,19 @@
 import React from 'react';
 import {Helmet} from "react-helmet-async";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle.jsx";
+import useAxiosSecure from "../../../hooks/useAxiosSecure.jsx";
+import useAuth from "../../../hooks/useAuth.jsx";
+import {useQuery} from "@tanstack/react-query";
+import EnrolledClassRow from "./EnrolledClassRow.jsx";
 
 const EnrolledClasses = () => {
+    const [axiosSecure] = useAxiosSecure();
+    const {user} = useAuth();
     
+    const {data: enrolledClasses = []} = useQuery(["enrolledClasses"], async () => {
+        const res = await axiosSecure.get(`/payments?email=${user.email}`);
+        return res.data;
+    });
     
     return (
         <div className="w-[95%] mx-auto">
@@ -12,53 +22,26 @@ const EnrolledClasses = () => {
             </Helmet>
             <SectionTitle heading="My Enrolled Classes"></SectionTitle>
             
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto w-[95%] mx-auto mt-8">
                 <table className="table">
                     {/* head */}
                     <thead>
                     <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label>
-                        </th>
-                        <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
+                        <th>#</th>
+                        <th>Class</th>
+                        <th>Instructor</th>
+                        <th>Price</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    {/* row 1 */}
-                    <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label>
-                        </th>
-                        <td>
-                            <div className="flex items-center space-x-3">
-                                <div className="avatar">
-                                    <div className="mask mask-squircle w-12 h-12">
-                                        <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="font-bold">Hart Hagerty</div>
-                                    <div className="text-sm opacity-50">United States</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Zemlak, Daniel and Leannon
-                            <br/>
-                            <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                        </td>
-                        <td>Purple</td>
-                        <th>
-                            <button className="btn btn-ghost btn-xs">details</button>
-                        </th>
-                    </tr>
+                    {/*{*/}
+                    {/*    enrolledClasses.map(items => console.log(items))*/}
+                    {/*}*/}
+                    {
+                        enrolledClasses.map(enrolledClass => <EnrolledClassRow key={enrolledClass._id}
+                                                                               enrolledClass={enrolledClass}></EnrolledClassRow>)
+                    }
                     </tbody>
                 </table>
             </div>
