@@ -20,7 +20,12 @@ const PopularClasses = () => {
                 const response = await axiosSecure.get('/classes/top');
                 setTopClasses(response.data);
             } catch (error) {
-                console.error('Error fetching top classes:', error);
+                await Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${error.message}`,
+                    footer: 'Something went wrong!',
+                })
             }
         };
         
