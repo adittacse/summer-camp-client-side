@@ -6,7 +6,7 @@ const BonusSection = () => {
     
     return (
         <div className="hero min-h-screen ">
-            <div className="hero-content flex-col lg:flex-row-reverse justify-between px-20">
+            <div className="hero-content bg-base-200 rounded-3xl flex-col lg:flex-row-reverse justify-between px-20">
                 <img src={img} className="max-w-sm rounded-lg shadow-2xl w-1/2" />
                 <div className="w-1/2">
                     <h1 className="text-5xl font-bold">Discover Inner Harmony: Embrace Yoga and Meditation for Mind, Body, and Soul</h1>
