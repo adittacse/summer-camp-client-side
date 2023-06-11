@@ -3,6 +3,7 @@ import {Helmet} from "react-helmet-async";
 import SectionTitle from "../../components/SectionTitle/SectionTitle.jsx";
 import useAxiosSecure from "../../hooks/useAxiosSecure.jsx";
 import InstructorCard from "./InstructorCard.jsx";
+import Swal from "sweetalert2";
 
 const Instructors = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -14,7 +15,12 @@ const Instructors = () => {
                 const response = await axiosSecure.get("/users/role/Instructor");
                 setInstructors(response.data);
             } catch (error) {
-                console.error('Error fetching instructors:', error);
+                await Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${error.message}`,
+                    footer: 'Something went wrong!',
+                })
             }
         }
         
