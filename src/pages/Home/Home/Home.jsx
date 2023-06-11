@@ -1,5 +1,6 @@
 import React from 'react';
 import {Helmet} from "react-helmet-async";
+import Slider from "../Slider/Slider.jsx";
 
 const Home = () => {
     return (
@@ -7,7 +8,8 @@ const Home = () => {
             <Helmet>
                 <title>Home | TranquilZen</title>
             </Helmet>
-            <h2 className="text-3xl">this is home</h2>
+            
+            <Slider></Slider>
         </div>
     );
 };
