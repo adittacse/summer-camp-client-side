@@ -4,7 +4,6 @@ import NavBar from "../pages/Shared/NavBar/NavBar.jsx";
 import Footer from "../pages/Shared/Footer/Footer.jsx";
 
 const Main = () => {
-    
     return (
         <div>
             <NavBar></NavBar>
