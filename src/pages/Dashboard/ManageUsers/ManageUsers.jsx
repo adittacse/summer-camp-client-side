@@ -47,12 +47,12 @@ const ManageUsers = () => {
     const handleMakeInstructor = (user) => {
         Swal.fire({
             title: 'Are you sure?',
-            text: `Make ${user.name} Subscriber?`,
+            text: `Make ${user.name} Instructor?`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, Make Subscriber!'
+            confirmButtonText: 'Yes, Make Instructor!'
         }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`http://localhost:3000/users/admin-to-instructor/${user._id}`, {
@@ -64,7 +64,7 @@ const ManageUsers = () => {
                             refetch();
                             Swal.fire(
                                 'Congratulations!',
-                                `${user.name} is Subscriber now`,
+                                `${user.name} is Instructor now`,
                                 'success'
                             )
                         }

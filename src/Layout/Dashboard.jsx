@@ -48,6 +48,18 @@ const Dashboard = () => {
                 <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                     {/* Sidebar content here */}
                     {
+                        role === "Admin" &&
+                        <h3 className="text-xl font-semibold text-center mb-3">Admin Dashboard</h3>
+                    }
+                    {
+                        role === "Instructor" &&
+                            <h3 className="text-xl font-semibold text-center mb-3">Instructor Dashboard</h3>
+                    }
+                    {
+                        role === "Student" &&
+                        <h3 className="text-xl font-semibold text-center mb-3">Student Dashboard</h3>
+                    }
+                    {
                         role === "Admin" && <>
                             <li><NavLink to="/dashboard/manage-classes">Manage Classes</NavLink></li>
                             <li><NavLink to="/dashboard/manage-users">Manage Users</NavLink></li>
