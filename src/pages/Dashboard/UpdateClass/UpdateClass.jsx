@@ -143,7 +143,7 @@ const UpdateClass = () => {
                     </div>
                     
                     <div className="flex mx-auto justify-center items-center mt-10 mb-4">
-                        <input disabled={isSubmitting} className="btn btn-primary" type="submit" value="Update SeeClasses" />
+                        <input disabled={isSubmitting} className="btn btn-primary" type="submit" value="Update Classes" />
                     </div>
                 </form>
             </div>
