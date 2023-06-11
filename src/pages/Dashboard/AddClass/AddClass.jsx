@@ -125,7 +125,7 @@ const AddClass = () => {
                     </div>
                     
                     <div className="flex mx-auto justify-center items-center mt-6 mb-4">
-                        <input disabled={isSubmitting} className="btn btn-primary" type="submit" value="Add SeeClasses" />
+                        <input disabled={isSubmitting} className="btn btn-primary" type="submit" value="Add Class" />
                     </div>
                 </form>
             </div>
