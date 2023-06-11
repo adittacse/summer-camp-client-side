@@ -30,10 +30,13 @@ const ManageClasses = () => {
                 try {
                     await axiosSecure.patch(`/class/approve/${item._id}`);
                     refetch();
-                    await Swal.fire(
-                        'Congratulations!',
-                        `${item.className} is Approved`,
-                        'success');
+                    await Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${item.className} is Approved`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 } catch (error) {
                     await Swal.fire({
                         icon: 'error',
