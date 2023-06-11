@@ -24,7 +24,7 @@ const ManageClasses = () => {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, Approve SeeClasses!'
+            confirmButtonText: 'Yes, Approve Class!'
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
@@ -57,16 +57,19 @@ const ManageClasses = () => {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, Deny SeeClasses!'
+            confirmButtonText: 'Yes, Deny Class!'
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
                     await axiosSecure.patch(`/class/deny/${item._id}`);
                     refetch();
-                    await Swal.fire(
-                        'Congratulations!',
-                        `${item.className} is Denied`,
-                        'success');
+                    await Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${item.className} is Denied`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                     handleModal(item);
                 } catch (error) {
                     await Swal.fire({
@@ -132,8 +135,7 @@ const ManageClasses = () => {
                     <tr className="items-center">
                         <th>#</th>
                         <th>SeeClasses</th>
-                        <th>Available Seats</th>
-                        <th>Price</th>
+                        <th>Total Seats</th>
                         <th>Instructor </th>
                         <th>Status</th>
                         <th className="text-center">Actions</th>
@@ -152,11 +154,11 @@ const ManageClasses = () => {
                                     </div>
                                     <div>
                                         <div className="font-bold">{item.className}</div>
+                                        <div className="text-sm opacity-50">Price: ${item.price}</div>
                                     </div>
                                 </div>
                             </td>
                             <td>{item.seats}</td>
-                            <td>${item.price}</td>
                             <td>
                                 <div>
                                     <div className="font-bold">{item.instructorName}</div>
@@ -166,18 +168,18 @@ const ManageClasses = () => {
                             <td>{item.status}</td>
                             <th className="text-center">
                                 <button onClick={() => handleApproveClass(item)}
-                                        className={`btn btn-ghost btn-xs hover:bg-green-700 ${item.status === 'Approved' ? 'disabled' : ''}`}
+                                        className={`btn btn-outline btn-success btn-xs mr-1 ${item.status === 'Approved' ? 'disabled' : ''}`}
                                         disabled={item.status === 'Approved'}>Approve</button>
                                 <button onClick={() => handleDenyClass(item)}
-                                        className={`btn btn-ghost btn-xs hover:bg-red-700 ${item.status === 'Denied' ? 'disabled' : ''}`}
+                                        className={`btn btn-outline btn-error btn-xs mr-1 ${item.status === 'Denied' ? 'disabled' : ''}`}
                                         disabled={item.status === 'Denied'}>Deny</button>
                                 <button onClick={() => handleModal(item)}
-                                        className="btn btn-ghost btn-xs hover:bg-secondary">Feedback</button>
+                                        className="btn btn-outline btn-info btn-xs hover:bg-secondary">Feedback</button>
                                 
                                 <dialog ref={ref => modalRefs.current[item._id] = ref} className="modal modal-bottom sm:modal-middle">
                                     <form method="dialog" className="modal-box">
                                         <h3 className="font-bold text-lg">Feedback!</h3>
-                                        <textarea ref={ref => textareaRefs.current[item._id] = ref} className="w-full mt-6 p-2" name="feedback" id="feedback" cols="30" rows="10"></textarea>
+                                        <textarea ref={ref => textareaRefs.current[item._id] = ref} className="w-full mt-6 p-2 border-black" name="feedback" id="feedback" cols="30" rows="10"></textarea>
                                         <p className="py-4">Press the ESC key or click the button below to close</p>
                                         <div className="modal-action flex justify-center">
                                             <input onClick={() => handleSendFeedback(item)} className="btn btn-primary" type="submit" value="Send Feedback" />

@@ -77,9 +77,9 @@ const AddClass = () => {
     return (
         <div className="w-[95%] mx-auto">
             <Helmet>
-                <title>Home | TranquilZen</title>
+                <title>Add A Class | TranquilZen</title>
             </Helmet>
-            <SectionTitle heading="Add A SeeClasses"></SectionTitle>
+            <SectionTitle heading="Add A Class"></SectionTitle>
             
             <div className="w-[90%] justify-center mx-auto my-8 p-6 rounded-xl bg-zinc-200">
                 <form onSubmit={handleAddClass}>

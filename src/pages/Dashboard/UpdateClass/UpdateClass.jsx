@@ -87,9 +87,9 @@ const UpdateClass = () => {
     return (
         <div className="w-[95%] mx-auto">
             <Helmet>
-                <title>Update SeeClasses | TranquilZen</title>
+                <title>Update Class | TranquilZen</title>
             </Helmet>
-            <SectionTitle heading="Update SeeClasses"></SectionTitle>
+            <SectionTitle heading="Update Class"></SectionTitle>
             
             <div className="w-[90%] justify-center mx-auto my-8 p-6 rounded-xl bg-blue-950">
                 <form onSubmit={handleUpdateClass}>

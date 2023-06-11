@@ -45,7 +45,7 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                <ul className="menu p-4 w-80 h-full text-base-content bg-[#020c3a] text-white">
                     {/* Sidebar content here */}
                     {
                         role === "Admin" &&
@@ -73,7 +73,7 @@ const Dashboard = () => {
                     }
                     {
                         role === "Student" && <>
-                            <li><NavLink to="/dashboard/selected-class">My Selected Class</NavLink></li>
+                            <li><NavLink to="/dashboard/selected-class">My Selected Classes</NavLink></li>
                             <li><NavLink to="/dashboard/enrolled-class">Enrolled Classes</NavLink></li>
                             <li><NavLink to="/dashboard/payment-history">Payment History</NavLink></li>
                         </>

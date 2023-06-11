@@ -105,7 +105,7 @@ const MyClasses = () => {
                             <th>
                                 <Link to={`/dashboard/update-class/${item._id}`}>
                                     <button className="btn btn-ghost btn-xs hover:bg-green-700 hover:text-white">
-                                        Update SeeClasses
+                                        Update Class
                                     </button>
                                 </Link>
                             </th>

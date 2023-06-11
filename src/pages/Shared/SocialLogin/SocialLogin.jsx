@@ -56,7 +56,7 @@ const SocialLogin = () => {
         <div>
             <div className="divider mt-6 mb-6">Or sign in with</div>
             <div className="flex justify-center mb-6">
-                <button onClick={handleGoogleSignIn} className="btn btn-circle hover:bg-red-600 mr-4">
+                <button onClick={handleGoogleSignIn} className="btn btn-circle hover:text-white hover:bg-red-600 mr-4">
                     <FaGoogle></FaGoogle>
                 </button>
             </div>

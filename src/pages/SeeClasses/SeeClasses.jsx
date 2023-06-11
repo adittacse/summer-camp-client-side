@@ -94,7 +94,7 @@ const SeeClasses = () => {
     return (
         <div className="max-w-screen-xl mx-auto">
             <Helmet>
-                <title>Instructors | TranquilZen</title>
+                <title>Instructor Classes | TranquilZen</title>
             </Helmet>
             
             <div className="hero-content flex-col lg:flex-row mx-auto items-center mt-10 mb-10">
