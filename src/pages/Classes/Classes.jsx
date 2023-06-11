@@ -42,7 +42,7 @@ const Classes = () => {
                 // Handle the case when the class already exists in the cart
                 Swal.fire({
                     icon: 'warning',
-                    title: 'Class already in the cart',
+                    title: 'SeeClasses already in the cart',
                     text: `${className} is already in your cart.`,
                     footer: 'Please remove the existing item from the cart if you want to add it again.'
                 });

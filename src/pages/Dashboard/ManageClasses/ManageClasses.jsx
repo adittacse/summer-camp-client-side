@@ -24,7 +24,7 @@ const ManageClasses = () => {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, Approve Class!'
+            confirmButtonText: 'Yes, Approve SeeClasses!'
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
@@ -57,7 +57,7 @@ const ManageClasses = () => {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, Deny Class!'
+            confirmButtonText: 'Yes, Deny SeeClasses!'
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
@@ -131,7 +131,7 @@ const ManageClasses = () => {
                     <thead>
                     <tr className="items-center">
                         <th>#</th>
-                        <th>Class</th>
+                        <th>SeeClasses</th>
                         <th>Available Seats</th>
                         <th>Price</th>
                         <th>Instructor </th>
@@ -147,7 +147,7 @@ const ManageClasses = () => {
                                 <div className="flex items-center space-x-3">
                                     <div className="avatar">
                                         <div className="mask mask-squircle w-12 h-12">
-                                            <img src={item.image} alt="Class image" />
+                                            <img src={item.image} alt="SeeClasses image" />
                                         </div>
                                     </div>
                                     <div>

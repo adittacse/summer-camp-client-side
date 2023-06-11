@@ -18,7 +18,7 @@ const AddClass = () => {
     const handleAddClass = (event) => {
         event.preventDefault();
         const formData = new FormData();
-        setIsSubmitting(true);  // disable Add Class button
+        setIsSubmitting(true);  // disable Add SeeClasses button
         
         const form = event.target;
         const className = form.className.value;
@@ -60,7 +60,7 @@ const AddClass = () => {
                                 Swal.fire({
                                     position: 'top-end',
                                     icon: 'success',
-                                    title: 'Class has been added successfully!',
+                                    title: 'SeeClasses has been added successfully!',
                                     showConfirmButton: false,
                                     timer: 1500
                                 })
@@ -68,7 +68,7 @@ const AddClass = () => {
                         })
                         .catch((error) => {})
                         .finally(() => {
-                            setIsSubmitting(false); // re-enable Add Class button
+                            setIsSubmitting(false); // re-enable Add SeeClasses button
                         });
                 }
             })
@@ -79,15 +79,15 @@ const AddClass = () => {
             <Helmet>
                 <title>Home | TranquilZen</title>
             </Helmet>
-            <SectionTitle heading="Add A Class"></SectionTitle>
+            <SectionTitle heading="Add A SeeClasses"></SectionTitle>
             
             <div className="w-[90%] justify-center mx-auto my-8 p-6 rounded-xl bg-zinc-200">
                 <form onSubmit={handleAddClass}>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-black">Class Name*</span>
+                            <span className="label-text text-black">SeeClasses Name*</span>
                         </label>
-                        <input type="text" name="className" placeholder="Class Name" {...register("className", {required: true, maxLength: 120})} className="input input-bordered w-full" required />
+                        <input type="text" name="className" placeholder="SeeClasses Name" {...register("className", {required: true, maxLength: 120})} className="input input-bordered w-full" required />
                     </div>
                     <div className="flex">
                         <div className="form-control w-1/2">
@@ -119,13 +119,13 @@ const AddClass = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-black">Class Image*</span>
+                            <span className="label-text text-black">SeeClasses Image*</span>
                         </label>
                         <input type="file" name="image" {...register("image", { required: true })} className="file-input w-full max-w-xs" required />
                     </div>
                     
                     <div className="flex mx-auto justify-center items-center mt-6 mb-4">
-                        <input disabled={isSubmitting} className="btn btn-primary" type="submit" value="Add Class" />
+                        <input disabled={isSubmitting} className="btn btn-primary" type="submit" value="Add SeeClasses" />
                     </div>
                 </form>
             </div>

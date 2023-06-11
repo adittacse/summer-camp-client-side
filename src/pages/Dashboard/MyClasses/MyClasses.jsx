@@ -71,7 +71,7 @@ const MyClasses = () => {
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Class</th>
+                        <th>SeeClasses</th>
                         <th>Total Seats</th>
                         <th>Enrolled Students</th>
                         <th>Available Seats</th>
@@ -88,7 +88,7 @@ const MyClasses = () => {
                                 <div className="flex items-center space-x-3">
                                     <div className="avatar">
                                         <div className="mask mask-squircle w-12 h-12">
-                                            <img src={item.image} alt="Class image" />
+                                            <img src={item.image} alt="SeeClasses image" />
                                         </div>
                                     </div>
                                     <div>
@@ -105,7 +105,7 @@ const MyClasses = () => {
                             <th>
                                 <Link to={`/dashboard/update-class/${item._id}`}>
                                     <button className="btn btn-ghost btn-xs hover:bg-green-700 hover:text-white">
-                                        Update Class
+                                        Update SeeClasses
                                     </button>
                                 </Link>
                             </th>

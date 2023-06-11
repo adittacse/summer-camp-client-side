@@ -31,7 +31,7 @@ const SelectedClass = () => {
                             refetch();
                             Swal.fire(
                                 'Deleted!',
-                                'Class has been deleted.',
+                                'SeeClasses has been deleted.',
                                 'success'
                             );
                         }

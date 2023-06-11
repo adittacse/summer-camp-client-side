@@ -20,6 +20,7 @@ import EnrolledClasses from "../pages/Dashboard/EnrolledClasses/EnrolledClasses.
 import Payment from "../pages/Dashboard/Payment/Payment.jsx";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory.jsx";
 import ErrorPage from "../pages/ErrorPage/ErrorPage.jsx";
+import SeeClasses from "../pages/SeeClasses/SeeClasses.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -45,6 +46,11 @@ export const router = createBrowserRouter([
             {
                 path: "classes",
                 element: <Classes></Classes>
+            },
+            {
+                path: "class/:id",
+                element: <SeeClasses></SeeClasses>,
+                loader: ({params}) => fetch(`http://localhost:3000/see-classes/${params.id}`)
             }
         ]
     },

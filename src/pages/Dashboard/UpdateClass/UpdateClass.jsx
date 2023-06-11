@@ -22,7 +22,7 @@ const UpdateClass = () => {
     const handleUpdateClass = (event) => {
         event.preventDefault();
         const formData = new FormData();
-        setIsSubmitting(true);  // disable Add Class button
+        setIsSubmitting(true);  // disable Add SeeClasses button
         
         const form = event.target;
         const className = form.className.value;
@@ -71,7 +71,7 @@ const UpdateClass = () => {
                             footer: 'Something went wrong!',
                         });
                     }
-                    setIsSubmitting(false); // re-enable Add Class button
+                    setIsSubmitting(false); // re-enable Add SeeClasses button
                 }
             })
             .catch(error => {
@@ -87,17 +87,17 @@ const UpdateClass = () => {
     return (
         <div className="w-[95%] mx-auto">
             <Helmet>
-                <title>Update Class | TranquilZen</title>
+                <title>Update SeeClasses | TranquilZen</title>
             </Helmet>
-            <SectionTitle heading="Update Class"></SectionTitle>
+            <SectionTitle heading="Update SeeClasses"></SectionTitle>
             
             <div className="w-[90%] justify-center mx-auto my-8 p-6 rounded-xl bg-blue-950">
                 <form onSubmit={handleUpdateClass}>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-white">Class Name*</span>
+                            <span className="label-text text-white">SeeClasses Name*</span>
                         </label>
-                        <input type="text" defaultValue={className} name="className" placeholder="Class Name" {...register("className", {required: true, maxLength: 120})} className="input input-bordered w-full" required />
+                        <input type="text" defaultValue={className} name="className" placeholder="SeeClasses Name" {...register("className", {required: true, maxLength: 120})} className="input input-bordered w-full" required />
                     </div>
                     <div className="flex">
                         <div className="form-control w-1/2">
@@ -136,14 +136,14 @@ const UpdateClass = () => {
                         </div>
                         <div className="form-control w-1/2 ml-6">
                             <label className="label">
-                                <span className="label-text text-white">Class Image</span>
+                                <span className="label-text text-white">SeeClasses Image</span>
                             </label>
                             <input type="file" name="image" {...register("image")} className="file-input w-full max-w-xs" />
                         </div>
                     </div>
                     
                     <div className="flex mx-auto justify-center items-center mt-10 mb-4">
-                        <input disabled={isSubmitting} className="btn btn-primary" type="submit" value="Update Class" />
+                        <input disabled={isSubmitting} className="btn btn-primary" type="submit" value="Update SeeClasses" />
                     </div>
                 </form>
             </div>

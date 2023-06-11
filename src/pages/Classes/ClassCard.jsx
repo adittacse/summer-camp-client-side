@@ -39,7 +39,7 @@ const ClassCard = ({ approvedClass, handleAddToCart }) => {
     return (
         <div className={cardClass}>
             <figure>
-                <img src={image} alt="Class image" />
+                <img src={image} alt="SeeClasses image" />
             </figure>
             <div className="card-body">
                 <h2 className="card-title">
