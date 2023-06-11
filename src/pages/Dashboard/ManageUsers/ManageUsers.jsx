@@ -26,7 +26,7 @@ const ManageUsers = () => {
             confirmButtonText: 'Yes, Make Admin!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/users/user-to-admin/${user._id}`, {
+                fetch(`https://summer-camp-new-test-adittacse.vercel.app/users/user-to-admin/${user._id}`, {
                     method: "PATCH"
                 })
                     .then(res => res.json())
@@ -55,7 +55,7 @@ const ManageUsers = () => {
             confirmButtonText: 'Yes, Make Instructor!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/users/admin-to-instructor/${user._id}`, {
+                fetch(`https://summer-camp-new-test-adittacse.vercel.app/users/admin-to-instructor/${user._id}`, {
                     method: "PATCH"
                 })
                     .then(res => res.json())
