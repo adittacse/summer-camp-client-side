@@ -6,7 +6,7 @@ import Footer from "../pages/Shared/Footer/Footer.jsx";
 const Main = () => {
     
     return (
-        <div className="dark:text-gray-100 dark:bg-slate-800 duration-100">
+        <div>
             <NavBar></NavBar>
             <Outlet></Outlet>
             <Footer></Footer>
