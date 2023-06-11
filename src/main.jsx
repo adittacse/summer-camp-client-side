@@ -18,6 +18,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 </HelmetProvider>
             </AuthProvider>
         </QueryClientProvider>
-        
     </React.StrictMode>
 )

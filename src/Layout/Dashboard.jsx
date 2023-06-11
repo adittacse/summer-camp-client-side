@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Link, NavLink, Outlet} from "react-router-dom";
 import useAuth from "../hooks/useAuth.jsx";
 import useRole from "../hooks/useRole.jsx";

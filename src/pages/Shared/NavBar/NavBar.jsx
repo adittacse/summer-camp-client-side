@@ -33,8 +33,8 @@ const NavBar = () => {
         }
         {
             role === "Student" && <>
-                    <li><Link to="/dashboard/selected-class">Dashboard</Link></li>
-                </>
+                <li><Link to="/dashboard/selected-class">Dashboard</Link></li>
+            </>
         }
         {
             role === "Student" && <li>
@@ -74,7 +74,7 @@ const NavBar = () => {
             <div className="navbar-end">
                 {
                     user ? <img className="w-16 h-14 rounded" src={user?.photoURL} alt="User Proile Picture" />
-                    : <>
+                        : <>
                             <Link className="btn mr-2" to="/login">Login</Link>
                             <Link className="btn" to="/signup">Signup</Link>
                         </>
