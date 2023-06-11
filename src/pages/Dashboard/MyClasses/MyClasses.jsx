@@ -10,10 +10,10 @@ const MyClasses = () => {
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const [classes, setClasses] = useState([]);
-    const [countEnrolledStudent, setCountEnrolledStudent] = useState([]);
+    const [enrolledStudentCounts, setEnrolledStudentCounts] = useState([]);
     
     useEffect(() => {
-        const fetchDeniedClasses = async () => {
+        const fetchClasses = async () => {
             try {
                 const response = await axiosSecure.get(`/class?instructorEmail=${user.email}`);
                 setClasses(response.data);
@@ -27,39 +27,34 @@ const MyClasses = () => {
             }
         };
         
-        fetchDeniedClasses()
-            .then((res) => {})
-            .catch((error) => {});
-    }, []);
+        fetchClasses();
+    }, [axiosSecure, user.email]);
     
     useEffect(() => {
-        if (classes.length > 0) {
-            const currentClassId = classes.map((item) => item._id);
-            const counts = [];
-            
-            const fetchData = async () => {
-                try {
-                    for (let i = 0; i < currentClassId.length; i++) {
-                        const response = await axiosSecure.get(
-                            `/payments/count?classId=${currentClassId[i]}`
-                        );
-                        const { count } = response.data;
-                        counts.push(count);
-                    }
-                    setCountEnrolledStudent(counts);
-                } catch (error) {
-                    await Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: `${error.message}`,
-                        footer: 'Something went wrong!',
-                    });
+        const fetchEnrolledStudentCounts = async () => {
+            try {
+                const currentClassId = classes.map((item) => item._id);
+                const counts = [];
+                
+                for (let i = 0; i < currentClassId.length; i++) {
+                    const response = await axiosSecure.get(`/payments/count?classId=${currentClassId[i]}`);
+                    const { count } = response.data;
+                    counts.push(count);
                 }
-            };
-            
-            fetchData()
-                .then(() => {})
-                .catch((error) => {});
+                
+                setEnrolledStudentCounts(counts);
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${error.message}`,
+                    footer: 'Something went wrong!',
+                });
+            }
+        };
+        
+        if (classes.length > 0) {
+            fetchEnrolledStudentCounts();
         }
     }, [axiosSecure, classes]);
     
@@ -103,8 +98,8 @@ const MyClasses = () => {
                                 </div>
                             </td>
                             <td>{item.seats}</td>
-                            <td>{countEnrolledStudent[index] || 0}</td>
-                            <td>{item.seats - countEnrolledStudent[index] || 0}</td>
+                            <td>{enrolledStudentCounts[index] || 0}</td>
+                            <td>{item.seats - (enrolledStudentCounts[index] || 0)}</td>
                             <td>{item.status}</td>
                             <td>{item.feedback}</td>
                             <th>
