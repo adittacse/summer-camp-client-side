@@ -5,7 +5,7 @@ const InstructorCard = ({ instructor }) => {
     
     return (
         <div className="card card-compact bg-base-100 shadow-xl">
-            <div className="flex">
+            <div>
                 <figure><img className="rounded-xl w-60 h-60" src={image} alt="Instructor image" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
@@ -24,9 +24,9 @@ const InstructorCard = ({ instructor }) => {
                             )
                         }
                     </ul>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary">See Classes</button>
-                    </div>
+                </div>
+                <div className="card-actions justify-center pb-8">
+                    <button className="btn btn-primary">See Classes</button>
                 </div>
             </div>
         </div>
