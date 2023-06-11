@@ -81,24 +81,24 @@ const AddClass = () => {
             </Helmet>
             <SectionTitle heading="Add A Class"></SectionTitle>
             
-            <div className="w-[90%] justify-center mx-auto my-8 p-6 rounded-xl bg-blue-950">
+            <div className="w-[90%] justify-center mx-auto my-8 p-6 rounded-xl bg-zinc-200">
                 <form onSubmit={handleAddClass}>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-white">Class Name*</span>
+                            <span className="label-text text-black">Class Name*</span>
                         </label>
                         <input type="text" name="className" placeholder="Class Name" {...register("className", {required: true, maxLength: 120})} className="input input-bordered w-full" required />
                     </div>
                     <div className="flex">
                         <div className="form-control w-1/2">
                             <label className="label">
-                                <span className="label-text text-white">Instructor Name</span>
+                                <span className="label-text text-black">Instructor Name</span>
                             </label>
                             <input type="text" name="instructorName" defaultValue={user?.displayName} disabled {...register("instructorName", { required: true })} className="input input-bordered w-full" />
                         </div>
                         <div className="form-control w-1/2 ml-6">
                             <label className="label">
-                                <span className="label-text text-white">Instructor Email</span>
+                                <span className="label-text text-black">Instructor Email</span>
                             </label>
                             <input type="text" name="instructorEmail" defaultValue={user.email} disabled {...register("instructorEmail", { required: true })} className="input input-bordered w-full" />
                         </div>
@@ -106,20 +106,20 @@ const AddClass = () => {
                     <div className="flex">
                         <div className="form-control w-1/2">
                             <label className="label">
-                                <span className="label-text text-white">Available Seats*</span>
+                                <span className="label-text text-black">Available Seats*</span>
                             </label>
                             <input type="text" name="seats" placeholder="Available Seats" {...register("seats", { required: true })} className="input input-bordered w-full" required />
                         </div>
                         <div className="form-control w-1/2 ml-6">
                             <label className="label">
-                                <span className="label-text text-white">Price*</span>
+                                <span className="label-text text-black">Price*</span>
                             </label>
                             <input type="text" name="price" placeholder="Price" {...register("price", { required: true })} className="input input-bordered w-full" required />
                         </div>
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-white">Class Image*</span>
+                            <span className="label-text text-black">Class Image*</span>
                         </label>
                         <input type="file" name="image" {...register("image", { required: true })} className="file-input w-full max-w-xs" required />
                     </div>
