@@ -161,7 +161,7 @@ const ManageClasses = () => {
                                 </div>
                             </td>
                             <td>{item.status}</td>
-                            <th className="text-center hover:text-white">
+                            <th className="text-center">
                                 <button onClick={() => handleApproveClass(item)}
                                         className={`btn btn-ghost btn-xs hover:bg-green-700 ${item.status === 'Approved' ? 'disabled' : ''}`}
                                         disabled={item.status === 'Approved'}>Approve</button>
