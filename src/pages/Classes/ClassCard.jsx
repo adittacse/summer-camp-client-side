@@ -52,7 +52,7 @@ const ClassCard = ({ approvedClass, handleAddToCart }) => {
                     <div className="badge badge-outline text-[16px] p-4">{
                         availableSeats < 2 ? `${availableSeats} Seat Available` : `${availableSeats} Seats Available`
                     }</div>
-                    <button onClick={() => handleAddToCart(approvedClass)} disabled={seats == 0 || role === "Admin" || role === "Instructor"} className="btn btn-primary btn-sm">Select</button>
+                    <button onClick={() => handleAddToCart(approvedClass)} disabled={availableSeats == 0 || role === "Admin" || role === "Instructor"} className="btn btn-primary btn-sm">Select</button>
                 </div>
             </div>
         </div>
