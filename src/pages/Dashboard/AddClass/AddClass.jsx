@@ -85,9 +85,9 @@ const AddClass = () => {
                 <form onSubmit={handleAddClass}>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-black">SeeClasses Name*</span>
+                            <span className="label-text text-black">Classes Name*</span>
                         </label>
-                        <input type="text" name="className" placeholder="SeeClasses Name" {...register("className", {required: true, maxLength: 120})} className="input input-bordered w-full" required />
+                        <input type="text" name="className" placeholder="Classes Name" {...register("className", {required: true, maxLength: 120})} className="input input-bordered w-full" required />
                     </div>
                     <div className="flex">
                         <div className="form-control w-1/2">
@@ -119,7 +119,7 @@ const AddClass = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-black">SeeClasses Image*</span>
+                            <span className="label-text text-black">Classes Image*</span>
                         </label>
                         <input type="file" name="image" {...register("image", { required: true })} className="file-input w-full max-w-xs" required />
                     </div>
