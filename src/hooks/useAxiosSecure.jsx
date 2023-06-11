@@ -4,7 +4,7 @@ import axios from "axios";
 import useAuth from "./useAuth.jsx";
 
 const axiosSecure = axios.create({
-    baseURL: "https://summer-camp-new-test-adittacse.vercel.app",
+    baseURL: "http://localhost:3000",
 });
 
 const UseAxiosSecure = () => {

@@ -32,7 +32,7 @@ const Instructors = () => {
     return (
         <div className="max-w-screen-xl mx-auto">
             <Helmet>
-                <title>Selected Classes | TranquilZen</title>
+                <title>Instructors | TranquilZen</title>
             </Helmet>
             <SectionTitle heading="Meet Our Instructors"></SectionTitle>
             

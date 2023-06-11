@@ -27,7 +27,7 @@ const InstructorCard = ({ instructor }) => {
                     </ul>
                 </div>
                 <div className="card-actions justify-center pb-8">
-                    <Link to="">
+                    <Link to={`/class/${_id}`}>
                         <button className="btn btn-primary">See Classes</button>
                     </Link>
                 </div>
