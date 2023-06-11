@@ -5,7 +5,7 @@ import moment from 'moment';
 const Footer = () => {
     return (
         <div className="max-w-screen-xl mx-auto">
-            <footer className="footer p-10 bg-base-200 text-base-content">
+            <footer className="footer p-10 text-base-content">
                 <div>
                     <img className="w-52" src={logo} alt="Website Footer Logo"/>
                     <p>Learn YOGA from and MEDITATION <br/>from TranquilZen online!</p>
@@ -34,7 +34,7 @@ const Footer = () => {
                     </p>
                 </div>
             </footer>
-            <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+            <footer className="footer footer-center p-4 text-base-content">
                 <div>
                     <p>Copyright © {moment().format("YYYY")} - All right reserved by TranquilZen</p>
                 </div>
