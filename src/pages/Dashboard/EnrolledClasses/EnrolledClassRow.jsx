@@ -29,7 +29,6 @@ const EnrolledClassRow = ({ enrolledClass }) => {
                     <td>{classItem.instructorName}</td>
                     <td>${classItem.price}</td>
                     <td className="text-center">{classItem.seats}</td>
-                    <td className="text-center">{classItem.enrolledStudent}</td>
                 </tr>
             ))}
         </>

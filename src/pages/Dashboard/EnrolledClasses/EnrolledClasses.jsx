@@ -30,7 +30,6 @@ const EnrolledClasses = () => {
                         <th>Instructor</th>
                         <th>Price</th>
                         <th className="text-center">Available Seats</th>
-                        <th className="text-center">Enrolled Students</th>
                     </tr>
                     </thead>
                     <tbody>
