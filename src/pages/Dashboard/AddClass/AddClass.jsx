@@ -85,9 +85,9 @@ const AddClass = () => {
                 <form onSubmit={handleAddClass}>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-black">Classes Name*</span>
+                            <span className="label-text text-black">Class Name*</span>
                         </label>
-                        <input type="text" name="className" placeholder="Classes Name" {...register("className", {required: true, maxLength: 120})} className="input input-bordered w-full" required />
+                        <input type="text" name="className" placeholder="Class Name" {...register("className", {required: true, maxLength: 120})} className="input input-bordered w-full" required />
                     </div>
                     <div className="flex">
                         <div className="form-control w-1/2">
@@ -106,9 +106,9 @@ const AddClass = () => {
                     <div className="flex">
                         <div className="form-control w-1/2">
                             <label className="label">
-                                <span className="label-text text-black">Available Seats*</span>
+                                <span className="label-text text-black">Total Seats*</span>
                             </label>
-                            <input type="text" name="seats" placeholder="Available Seats" {...register("seats", { required: true })} className="input input-bordered w-full" required />
+                            <input type="text" name="seats" placeholder="Total Seats" {...register("seats", { required: true })} className="input input-bordered w-full" required />
                         </div>
                         <div className="form-control w-1/2 ml-6">
                             <label className="label">

@@ -71,7 +71,7 @@ const MyClasses = () => {
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>SeeClasses</th>
+                        <th>Class</th>
                         <th>Total Seats</th>
                         <th>Enrolled Students</th>
                         <th>Available Seats</th>
