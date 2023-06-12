@@ -23,7 +23,7 @@ const SignUp = () => {
                             email: data.email,
                             role: "Student"
                         };
-                        fetch("http://localhost:3000/users", {
+                        fetch("https://summer-camp-new-test.vercel.appusers", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json"

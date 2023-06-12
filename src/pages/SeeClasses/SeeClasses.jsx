@@ -19,7 +19,7 @@ const SeeClasses = () => {
     useEffect(() => {
         const fetchClasses = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/see-classes/${id}`);
+                const response = await fetch(`https://summer-camp-new-test.vercel.appsee-classes/${id}`);
                 if (response.ok) {
                     const data = await response.json();
                     setClasses(data.classes);

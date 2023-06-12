@@ -5,7 +5,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure.jsx";
 import Swal from "sweetalert2";
 import {RiDeleteBin5Line} from "react-icons/ri";
 import useCart from "../../../hooks/useCart.jsx";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {MdPayment} from "react-icons/md";
 
 const SelectedClass = () => {
