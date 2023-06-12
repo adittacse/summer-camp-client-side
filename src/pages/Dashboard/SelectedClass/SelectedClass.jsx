@@ -5,13 +5,23 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure.jsx";
 import Swal from "sweetalert2";
 import {RiDeleteBin5Line} from "react-icons/ri";
 import useCart from "../../../hooks/useCart.jsx";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {MdPayment} from "react-icons/md";
 
 const SelectedClass = () => {
     const [axiosSecure] = useAxiosSecure();
     const [cart, refetch] = useCart();
+    const navigate = useNavigate();
     
-    const totalPrice = cart.reduce((sum, item) => item.price + sum, 0);
+    const handlePaymentClick = (myClass) => {
+        const paymentProps = {
+            myClass,
+            price: myClass.price
+        };
+        
+        navigate('/dashboard/payment', { state: paymentProps });
+    };
+    
     
     const handleDelete = (item) => {
         Swal.fire({
@@ -55,12 +65,8 @@ const SelectedClass = () => {
             </Helmet>
             <SectionTitle heading="My Selected Classes"></SectionTitle>
             
-            <div className="flex justify-evenly items-center w-[95%] mx-auto font-semibold mt-10">
+            <div className="flex w-[95%] mx-auto font-semibold mt-10">
                 <h3 className="text-xl uppercase">Total Orders: {cart.length}</h3>
-                <h3 className="text-xl uppercase">Total Price: ${totalPrice.toFixed(2)}</h3>
-                <Link to="/dashboard/payment">
-                    <button className="btn btn-warning">Pay</button>
-                </Link>
             </div>
             
             <div className="overflow-x-auto w-[95%] mx-auto mt-10">
@@ -94,8 +100,11 @@ const SelectedClass = () => {
                             <td>{selectedClass.instructorName}</td>
                             <td>${selectedClass.price}</td>
                             <th className="text-center">
-                                <button onClick={() => handleDelete(selectedClass)} className="btn btn-sm bg-red-800 text-white">
+                                <button onClick={() => handleDelete(selectedClass)} className="btn btn-sm bg-red-800 text-white mr-2">
                                     <RiDeleteBin5Line></RiDeleteBin5Line> Delete Class
+                                </button>
+                                <button className="btn btn-warning btn-sm" onClick={() => handlePaymentClick(selectedClass)}>
+                                    <MdPayment /> Pay
                                 </button>
                             </th>
                         </tr>

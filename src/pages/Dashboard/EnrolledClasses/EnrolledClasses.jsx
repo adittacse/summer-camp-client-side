@@ -26,17 +26,16 @@ const EnrolledClasses = () => {
                 <table className="table">
                     <thead>
                     <tr>
+                        <th>#</th>
                         <th>Class</th>
                         <th>Instructor</th>
                         <th>Price</th>
-                        <th className="text-center">Available Seats</th>
                     </tr>
                     </thead>
                     <tbody>
                     {
-                        enrolledClasses.map((enrolledClass) => (
-                            <EnrolledClassRow key={enrolledClass._id} enrolledClass={enrolledClass} />
-                            )
+                        enrolledClasses.map((enrolledClass, index) =>
+                            <EnrolledClassRow key={enrolledClass._id} enrolledClass={enrolledClass} index={index}/>
                         )
                     }
                     </tbody>

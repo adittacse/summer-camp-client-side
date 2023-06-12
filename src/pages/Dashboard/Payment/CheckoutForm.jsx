@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth.jsx";
 import useAxiosSecure from "../../../hooks/useAxiosSecure.jsx";
 import Swal from "sweetalert2";
 
-const CheckoutForm = ({ cart, price }) => {
+const CheckoutForm = ({ myClass, price }) => {
     const stripe = useStripe();
     const elements = useElements();
     const {user} = useAuth();
@@ -13,6 +13,7 @@ const CheckoutForm = ({ cart, price }) => {
     const [clientSecret, setClientSecret] = useState("");
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState("");
+    
     
     useEffect( () => {
         if (price > 0) {
@@ -76,11 +77,12 @@ const CheckoutForm = ({ cart, price }) => {
                     transactionId: paymentIntent.id,
                     price,
                     date: new Date(),
-                    quantity: cart.length,
-                    cartItemsId: cart.map(item => item._id),
-                    classesId: cart.map(item => item.classId),
+                    cartItemId: myClass._id,
+                    classId: myClass.classId,
+                    classImage: myClass.image,
                     status: "Service Pending",
-                    classesName: cart.map(item => item.className),
+                    className: myClass.className,
+                    instructorName: myClass.instructorName,
                 }
                 axiosSecure.post("/payments", payment)
                     .then(res => {

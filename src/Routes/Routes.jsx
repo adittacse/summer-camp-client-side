@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
             {
                 path: "class/:id",
                 element: <SeeClasses></SeeClasses>,
-                loader: ({params}) => fetch(`https://summer-camp-new-test.vercel.app/see-classes/${params.id}`)
+                loader: ({params}) => fetch(`http://localhost:3000/see-classes/${params.id}`)
             }
         ]
     },
@@ -79,7 +79,7 @@ export const router = createBrowserRouter([
             {
                 path: "update-class/:id",
                 element: <InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>,
-                loader: ({params}) => fetch(`https://summer-camp-new-test.vercel.app/class/${params.id}`)
+                loader: ({params}) => fetch(`http://localhost:3000/class/${params.id}`)
             },
             // student routes
             {

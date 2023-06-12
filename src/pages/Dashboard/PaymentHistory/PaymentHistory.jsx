@@ -28,8 +28,8 @@ const PaymentHistory = () => {
                     <thead>
                     <tr>
                         <th>Order</th>
-                        <th>Your Classes</th>
-                        <th className="text-center">Price & Quantity</th>
+                        <th>Class</th>
+                        <th className="text-center">Price</th>
                         <th className="text-center">Date & Time</th>
                         <th className="text-center">Transaction ID</th>
                     </tr>
@@ -38,15 +38,19 @@ const PaymentHistory = () => {
                     {
                         payments.map((payment, index) => <tr key={payment._id}>
                                 <th>#{payments.length - index}</th>
-                                <ul>
-                                    {
-                                        payment.classesName.map((className, index) => (
-                                                <li className="text-[16px]" key={index}>{`${index + 1}. ${className}`}</li>
-                                            )
-                                        )
-                                    }
-                                </ul>
-                                <td className="text-center">$ {payment.price} for {payment.quantity} item</td>
+                            <td>
+                                <div className="flex items-center space-x-3">
+                                    <div className="avatar">
+                                        <div className="mask mask-squircle w-12 h-12">
+                                            <img src={payment.classImage} alt="Avatar Tailwind CSS Component" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className="font-bold">{payment.className}</div>
+                                    </div>
+                                </div>
+                            </td>
+                                <td className="text-center">${payment.price}</td>
                                 <td className="text-center">
                                     {moment(payment.date).format("D MMMM, YYYY")}
                                     <br/>
