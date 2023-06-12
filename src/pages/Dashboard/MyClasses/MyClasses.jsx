@@ -77,7 +77,7 @@ const MyClasses = () => {
                         <th>Available Seats</th>
                         <th>Status</th>
                         <th>Admin Feedback</th>
-                        <th>Action</th>
+                        <th className="text-center">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -102,9 +102,9 @@ const MyClasses = () => {
                             <td>{item.seats - (enrolledStudentCounts[index] || 0)}</td>
                             <td>{item.status}</td>
                             <td>{item.feedback}</td>
-                            <th>
+                            <th className="text-center">
                                 <Link to={`/dashboard/update-class/${item._id}`}>
-                                    <button className="btn btn-ghost btn-xs hover:bg-green-700 hover:text-white">
+                                    <button className="btn btn-outline btn-success btn-xs">
                                         Update Class
                                     </button>
                                 </Link>

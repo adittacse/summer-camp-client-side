@@ -95,9 +95,9 @@ const UpdateClass = () => {
                 <form onSubmit={handleUpdateClass}>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-white">SeeClasses Name*</span>
+                            <span className="label-text text-white">Class Name*</span>
                         </label>
-                        <input type="text" defaultValue={className} name="className" placeholder="SeeClasses Name" {...register("className", {required: true, maxLength: 120})} className="input input-bordered w-full" required />
+                        <input type="text" defaultValue={className} name="className" placeholder="Class Name" {...register("className", {required: true, maxLength: 120})} className="input input-bordered w-full" required />
                     </div>
                     <div className="flex">
                         <div className="form-control w-1/2">
@@ -136,7 +136,7 @@ const UpdateClass = () => {
                         </div>
                         <div className="form-control w-1/2 ml-6">
                             <label className="label">
-                                <span className="label-text text-white">SeeClasses Image</span>
+                                <span className="label-text text-white">Class Image</span>
                             </label>
                             <input type="file" name="image" {...register("image")} className="file-input w-full max-w-xs" />
                         </div>
