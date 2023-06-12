@@ -11,6 +11,7 @@ const NavBar = () => {
     const { user, logOut } = useAuth();
     const [role] = useRole();
     const [cart] = useCart();
+    const [menuOpen, setMenuOpen] = useState(false); // State to manage the open/closed state of the menu
     
     const [theme, setTheme] = useState(
         localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light'
@@ -36,83 +37,65 @@ const NavBar = () => {
             .catch((error) => {});
     };
     
+    const closeMenu = () => {
+        setMenuOpen(false); // Close the menu
+    };
+    
     const navMenuItems = (
         <>
-            <motion.li
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                key="home"
-            >
+            <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} key="home" onClick={closeMenu}>
                 <Link to="/">Home</Link>
             </motion.li>
-            <motion.li
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                key="instructors"
-            >
+            <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} key="instructors" onClick={closeMenu}>
                 <Link to="/instructors">Instructors</Link>
             </motion.li>
-            <motion.li
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                key="classes"
-            >
+            <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} key="classes" onClick={closeMenu}>
                 <Link to="/classes">Classes</Link>
             </motion.li>
-            {role === 'Admin' && (
-                <motion.li
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    key="admin-dashboard"
-                >
+            {role === 'Admin' &&
+                <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} key="admin-dashboard" onClick={closeMenu}>
                     <Link to="/dashboard/manage-classes">Dashboard</Link>
                 </motion.li>
-            )}
-            {role === 'Instructor' && (
-                <motion.li
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    key="instructor-dashboard"
-                >
+            }
+            {role === 'Instructor' &&
+                <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} key="instructor-dashboard" onClick={closeMenu}>
                     <Link to="/dashboard/my-classes">Dashboard</Link>
                 </motion.li>
-            )}
-            {role === 'Student' && (
-                <motion.li
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    key="student-dashboard"
-                >
+            }
+            {role === 'Student' &&
+                <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} key="student-dashboard" onClick={closeMenu}>
                     <Link to="/dashboard/selected-class">Dashboard</Link>
                 </motion.li>
-            )}
-            {role === 'Student' && (
-                <motion.li
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    key="shopping-cart"
-                >
+            }
+            {role === 'Student' &&
+                <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} key="shopping-cart" onClick={closeMenu}>
                     <Link to="/dashboard/selected-class">
                         <button className="btn gap-2 text-[16px]">
-                            <FaShoppingCart></FaShoppingCart>
-                            <div className="badge badge-secondary text-[16px]">
-                                +{cart?.length || 0}
-                            </div>
+                            <FaShoppingCart></FaShoppingCart> <div className="badge badge-secondary text-[16px]">+{cart?.length || 0}</div>
                         </button>
                     </Link>
                 </motion.li>
-            )}
-            {user && (
-                <motion.li
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    key="logout"
-                >
+            }
+            {user &&
+                <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} key="logout" onClick={closeMenu}>
                     <Link onClick={handleLogout} to="/">
                         Logout
                     </Link>
                 </motion.li>
-            )}
+            }
+            
+            { !user &&
+                <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} key="login" onClick={closeMenu}>
+                    <Link to="/login">Login</Link>
+                </motion.li>
+            }
+            
+            { !user &&
+                <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} key="signup" onClick={closeMenu}>
+                    <Link to="/signup">Signup</Link>
+                </motion.li>
+            }
+            
         </>
     );
     
@@ -121,18 +104,16 @@ const NavBar = () => {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="navbar bg-base-100 max-w-screen-xl mx-auto"
-        >
+            className="navbar bg-base-100 max-w-screen-xl mx-auto">
             <div className="navbar-start">
-                <div className="dropdown">
-                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                <div className="dropdown z-10">
+                    <label tabIndex={0} className="btn btn-ghost lg:hidden" onClick={() => setMenuOpen(!menuOpen)}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
                             fill="none"
                             viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
+                            stroke="currentColor">
                             <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -143,8 +124,8 @@ const NavBar = () => {
                     </label>
                     <motion.ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-                    >
+                        className={`menu z-10 menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ${
+                            menuOpen ? 'block' : 'hidden'}`}>
                         {navMenuItems}
                     </motion.ul>
                 </div>
@@ -155,54 +136,39 @@ const NavBar = () => {
                         transition={{ duration: 1 }}
                         className="w-52"
                         src={logo}
-                        alt="Website Logo"
-                    />
+                        alt="Website Logo"/>
                 </Link>
             </div>
             <motion.div
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="navbar-center hidden lg:flex"
-            >
+                className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 items-center">
                     {navMenuItems}
                 </ul>
             </motion.div>
             <div className="navbar-end">
-                {user ? (
+                {user &&
                     <motion.img
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1 }}
                         className="w-16 h-14 mr-2 rounded"
                         src={user?.photoURL}
-                        alt="User Profile Picture"
-                    />
-                ) : (
-                    <>
-                        <Link className="btn mr-2" to="/login">
-                            Login
-                        </Link>
-                        <Link className="btn mr-2" to="/signup">
-                            Signup
-                        </Link>
-                    </>
-                )}
+                        alt="User Profile Picture"/>
+                }
                 <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="btn btn-square btn-ghost"
-                >
+                    className="btn btn-square btn-ghost">
                     <motion.label
                         className="swap swap-rotate w-12 h-12"
-                        whileHover={{ rotate: 180 }}
-                    >
+                        whileHover={{ rotate: 180 }}>
                         <input
                             type="checkbox"
                             onChange={handleToggle}
-                            checked={theme === 'light' ? false : true}
-                        />
+                            checked={theme === 'light' ? false : true}/>
                         <motion.svg
                             className="swap-on fill-current w-10 h-10"
                             xmlns="http://www.w3.org/2000/svg"
