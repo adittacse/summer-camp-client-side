@@ -97,7 +97,10 @@ const SelectedClass = () => {
                                     </div>
                                 </div>
                             </td>
-                            <td>{selectedClass.instructorName}</td>
+                            <td>
+                                <div>{selectedClass.instructorName}</div>
+                                <div>{selectedClass?.instructorEmail}</div>
+                            </td>
                             <td>${selectedClass.price}</td>
                             <th className="text-center">
                                 <button onClick={() => handleDelete(selectedClass)} className="btn btn-sm bg-red-800 text-white mr-2">

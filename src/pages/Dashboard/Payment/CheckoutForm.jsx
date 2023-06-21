@@ -83,6 +83,7 @@ const CheckoutForm = ({ myClass, price }) => {
                     status: "Service Pending",
                     className: myClass.className,
                     instructorName: myClass.instructorName,
+                    instructorEmail: myClass.instructorEmail,
                 }
                 axiosSecure.post("/payments", payment)
                     .then(res => {

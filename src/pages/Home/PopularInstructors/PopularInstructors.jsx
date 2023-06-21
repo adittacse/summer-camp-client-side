@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import useAxiosSecure from "../../../hooks/useAxiosSecure.jsx";
-import InstructorCard from "../../Instructors/InstructorCard.jsx";
 import TopInstructor from "./TopInstructor.jsx";
 import Swal from "sweetalert2";
 

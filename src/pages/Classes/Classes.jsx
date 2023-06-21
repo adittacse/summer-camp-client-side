@@ -33,8 +33,8 @@ const Classes = () => {
     
     const handleAddToCart = (approvedClass) => {
         if (user && user.email) {
-            const {_id, image, className, instructorName, price} = approvedClass;
-            const mySelectedClass = {classId: _id, image, className, instructorName, price, email: user.email};
+            const {_id, image, className, instructorName, instructorEmail, price} = approvedClass;
+            const mySelectedClass = {classId: _id, image, className, instructorName, instructorEmail, price, email: user.email};
             
             // Check if the selected class already exists in the cart
             const existsInCart = cart.some(item => item.classId === mySelectedClass.classId);
