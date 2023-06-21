@@ -49,9 +49,9 @@ const ClassCard = ({ approvedClass, handleAddToCart }) => {
                 <p className="text-bold text-[17px]">Instructor: {instructorName}</p>
                 <p className="text-bold text-[17px]">Total Seats: {seats}</p>
                 <div className="card-actions justify-between flex items-center mt-4">
-                    <div className="badge badge-outline text-[16px] p-4">{
-                        availableSeats < 2 ? `${availableSeats} Seat Available` : `${availableSeats} Seats Available`
-                    }</div>
+                    <div className="badge badge-outline text-[16px] p-4">
+                        {availableSeats < 2 ? `${availableSeats} Seat Available` : `${availableSeats} Seats Available`}
+                    </div>
                     <button onClick={() => handleAddToCart(approvedClass)} disabled={availableSeats == 0 || role === "Admin" || role === "Instructor"} className="btn btn-primary btn-sm">Select</button>
                 </div>
             </div>
