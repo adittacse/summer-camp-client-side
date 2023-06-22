@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             // get and set token
             if (currentUser) {
-                axios.post("https://summer-camp-new-test.vercel.app/jwt", {
+                axios.post("https://summercampserverside-adittacse.b4a.run//jwt", {
                     email: currentUser.email,
                 })
                     .then(data => {
