@@ -22,12 +22,12 @@ const PaymentHistory = () => {
             </Helmet>
             <SectionTitle heading="My Payment History"></SectionTitle>
             
-            <div className="overflow-x-auto w-[95%] mx-auto mt-16">
+            <div className="overflow-x-auto w-[95%] mx-auto mt-8">
                 <table className="table">
                     {/* head */}
                     <thead>
                     <tr>
-                        <th>Order</th>
+                        <th>#</th>
                         <th>Class</th>
                         <th className="text-center">Price</th>
                         <th className="text-center">Date & Time</th>
@@ -37,7 +37,7 @@ const PaymentHistory = () => {
                     <tbody>
                     {
                         payments.map((payment, index) => <tr key={payment._id}>
-                                <th>#{payments.length - index}</th>
+                                <td>{payments.length - index}</td>
                             <td>
                                 <div className="flex items-center space-x-3">
                                     <div className="avatar">
