@@ -66,7 +66,7 @@ const SelectedClass = () => {
             <SectionTitle heading="My Selected Classes"></SectionTitle>
             
             <div className="flex w-[95%] mx-auto font-semibold mt-10">
-                <h3 className="text-xl uppercase">Total Orders: {cart.length}</h3>
+                <h3 className="text-xl uppercase">Total Selected Class: {cart.length}</h3>
             </div>
             
             <div className="overflow-x-auto w-[95%] mx-auto mt-10">
@@ -76,9 +76,9 @@ const SelectedClass = () => {
                     <tr>
                         <th>#</th>
                         <th>Class</th>
-                        <th>Instructor Name</th>
+                        <th>Instructor</th>
                         <th>Price</th>
-                        <th className="text-center">Action</th>
+                        <th className="text-center">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -98,7 +98,7 @@ const SelectedClass = () => {
                                 </div>
                             </td>
                             <td>
-                                <div>{selectedClass.instructorName}</div>
+                                <div className="font-semibold">{selectedClass.instructorName}</div>
                                 <div>{selectedClass?.instructorEmail}</div>
                             </td>
                             <td>${selectedClass.price}</td>
