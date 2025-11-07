@@ -4,7 +4,7 @@ import axios from "axios";
 import useAuth from "./useAuth.jsx";
 
 const axiosSecure = axios.create({
-    baseURL: 'https://summercampserverside-adittacse.b4a.run/',
+    baseURL: 'https://summer-camp-server-side.onrender.com',
 });
 
 const UseAxiosSecure = () => {

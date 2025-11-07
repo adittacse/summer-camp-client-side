@@ -21,7 +21,7 @@ const SocialLogin = () => {
                     email: loggedUser.email,
                     role: "Student"
                 };
-                fetch("https://summercampserverside-adittacse.b4a.run//users", {
+                fetch("https://summer-camp-server-side.onrender.com/users", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
